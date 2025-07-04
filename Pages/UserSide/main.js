@@ -497,3 +497,281 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// DOM Elements
+const navbar = document.querySelector('.navbar');
+const categoryCards = document.querySelectorAll('.category-card');
+const heroSection = document.querySelector('.hero-section');
+const offerButton = document.querySelector('.offer-button');
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+    navbar.style.boxShadow = '0 4px 25px rgba(0, 0, 0, 0.15)';
+  } else {
+    navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+  }
+});
+
+// Category card interactions
+categoryCards.forEach((card, index) => {
+  // Stagger animation on load
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(50px)';
+  
+  setTimeout(() => {
+    card.style.transition = 'all 0.6s ease';
+    card.style.opacity = '1';
+    card.style.transform = 'translateY(0)';
+  }, index * 200);
+
+  // Hover sound effect (visual feedback)
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-15px) scale(1.02)';
+    
+    // Add a subtle glow effect
+    const glow = card.querySelector('.category-glow');
+    if (glow) {
+      glow.style.opacity = '1';
+      glow.style.transform = 'scale(1.1)';
+    }
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0) scale(1)';
+    
+    const glow = card.querySelector('.category-glow');
+    if (glow) {
+      glow.style.opacity = '0';
+      glow.style.transform = 'scale(1)';
+    }
+  });
+
+  // Click animation
+  card.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Create ripple effect
+    const ripple = document.createElement('div');
+    ripple.style.position = 'absolute';
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    ripple.style.background = 'rgba(144, 238, 144, 0.6)';
+    ripple.style.borderRadius = '50%';
+    ripple.style.left = e.offsetX + 'px';
+    ripple.style.top = e.offsetY + 'px';
+    ripple.style.transform = 'translate(-50%, -50%)';
+    ripple.style.animation = 'ripple 0.6s ease-out';
+    ripple.style.pointerEvents = 'none';
+    
+    card.appendChild(ripple);
+    
+    // Remove ripple after animation
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+    
+    // Navigate after animation
+    setTimeout(() => {
+      window.location.href = card.href;
+    }, 300);
+  });
+});
+
+// Add ripple animation to CSS
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes ripple {
+    0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(20);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// Special offer button interaction
+if (offerButton) {
+  offerButton.addEventListener('click', () => {
+    // Create confetti effect
+    createConfetti();
+    
+    // Show alert with offer details
+    setTimeout(() => {
+      alert('🎉 Matcha Monday Special! 🎉\n\nEvery Monday, enjoy 20% off on all our delicious matcha treats!\n\nUse code: MATCHAMONDAY\nValid every Monday from 9 AM to 9 PM\n\nSweet deals await! 🍃');
+    }, 500);
+  });
+}
+
+// Confetti effect function
+function createConfetti() {
+  const colors = ['#90EE90', '#32CD32', '#FFE66D', '#FF6B6B', '#667eea'];
+  
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement('div');
+    confetti.style.position = 'fixed';
+    confetti.style.width = '10px';
+    confetti.style.height = '10px';
+    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+    confetti.style.left = Math.random() * 100 + '%';
+    confetti.style.top = '-10px';
+    confetti.style.borderRadius = '50%';
+    confetti.style.pointerEvents = 'none';
+    confetti.style.zIndex = '9999';
+    confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+    
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => {
+      confetti.remove();
+    }, 5000);
+  }
+}
+
+// Add confetti animation to CSS
+const confettiStyle = document.createElement('style');
+confettiStyle.textContent = `
+  @keyframes confettiFall {
+    0% {
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(confettiStyle);
+
+// Parallax effect for hero section
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const rate = scrolled * -0.5;
+  
+  if (heroSection) {
+    heroSection.style.transform = `translateY(${rate}px)`;
+  }
+});
+
+// Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'slideInUp 0.8s ease-out forwards';
+    }
+  });
+}, observerOptions);
+
+// Observe elements for scroll animations
+document.querySelectorAll('.shop-intro, .special-offer').forEach(el => {
+  observer.observe(el);
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Dynamic favicon effect
+function updateFavicon() {
+  const favicon = document.querySelector('link[rel="icon"]') || document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🍃</text></svg>';
+  document.head.appendChild(favicon);
+}
+
+// Initialize favicon
+updateFavicon();
+
+// Add loading animation
+window.addEventListener('load', () => {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease';
+  
+  setTimeout(() => {
+    document.body.style.opacity = '1';
+  }, 100);
+});
+
+// Keyboard navigation support
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    document.body.classList.add('keyboard-navigation');
+  }
+});
+
+document.addEventListener('mousedown', () => {
+  document.body.classList.remove('keyboard-navigation');
+});
+
+// Add keyboard navigation styles
+const keyboardStyle = document.createElement('style');
+keyboardStyle.textContent = `
+  .keyboard-navigation *:focus {
+    outline: 3px solid #90EE90;
+    outline-offset: 2px;
+  }
+`;
+document.head.appendChild(keyboardStyle);
+
+// Performance optimization - lazy loading for images
+const lazyImages = document.querySelectorAll('img[data-src]');
+
+const imageObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.classList.remove('lazy');
+      imageObserver.unobserve(img);
+    }
+  });
+});
+
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// Console welcome message
+console.log(`
+🍃 Welcome to Sweet Matcha! 🍃
+
+Thanks for checking out our delicious treats!
+Built with love and premium ingredients.
+
+🧇 Waffles | 🍨 Ice Cream | 🧁 Cupcakes | 🍪 Cookies | 🍩 Donuts
+
+Enjoy your sweet journey! ✨
+`);
+
+// Error handling
+window.addEventListener('error', (e) => {
+  console.error('Sweet Matcha Error:', e.error);
+});
+
+// Service worker registration (for future PWA features)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    // Future PWA implementation
+    console.log('Service Worker support detected');
+  });
+}
