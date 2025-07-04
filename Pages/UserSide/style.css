@@ -1490,3 +1490,62 @@ button:hover {
     gap: 1rem;
   }
 }
+
+/* Animation Enhancements */
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cart Page Specific Styles */
+.cart-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: #f8d4dc;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  animation: slideUp 0.7s ease-in-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
+  animation: fadeIn 0.5s ease;
+}
+
+.cart-item button {
+  background-color: #a8c3a0;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+  background-color: #8aa884;
+}
+
+.total {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  animation: fadeIn 0.8s ease;
+}
+

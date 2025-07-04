@@ -783,3 +783,44 @@ if (form) {
     alert('Thank you for reaching out to Sweet Matcha! 💌');
   });
 }
+
+const cartContainer = document.getElementById("cartContainer");
+
+function loadCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cartContainer.innerHTML = "";
+
+  if (cart.length === 0) {
+    cartContainer.innerHTML = "<p class='fade-in'>Your cart is empty 🛒</p>";
+    return;
+  }
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price;
+
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <span>${item.name} - ₹${item.price}</span>
+      <button onclick="removeFromCart(${index})">Remove</button>
+    `;
+    cartContainer.appendChild(div);
+  });
+
+  const totalDiv = document.createElement("div");
+  totalDiv.className = "total";
+  totalDiv.textContent = "Total: ₹" + total;
+  cartContainer.appendChild(totalDiv);
+}
+
+function removeFromCart(index) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
+}
+
+window.onload = loadCart;
+
