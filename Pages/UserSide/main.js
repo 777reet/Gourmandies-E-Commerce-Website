@@ -775,3 +775,11 @@ if ('serviceWorker' in navigator) {
     console.log('Service Worker support detected');
   });
 }
+
+// Add a simple submit alert
+const form = document.querySelector('.contact-form');
+if (form) {
+  form.addEventListener('submit', (e) => {
+    alert('Thank you for reaching out to Sweet Matcha! 💌');
+  });
+}
