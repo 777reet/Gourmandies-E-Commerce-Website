@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookies - Sweet Matcha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Sweet Matcha</a>
+    <div class="nav-links">
+      <a href="chatbot.html"><b>Chatbot</b></a>
+      <a href="cart.html"><b>Your Cart</b></a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="aboutus.html">About</a>
+      <a href="contactus.html">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1 class="fade-in">Cookie Heaven</h1>
+  </header>
+
+  <h2 class="fade-in-delayed">Cookies</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/ccck.jpg" alt="Chocolate Chip Cookie">
+      <p>Chocolate Chip Cookie</p>
+      <button onclick="addToCart('Chocolate Chip Cookie', 120, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/cherryck.jpg" alt="Cherry Jam Cookie">
+      <p>Cherry Jam Cookie</p>
+      <button onclick="addToCart('Cherry Jam Cookie', 130, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/sbck.jpg" alt="Strawberry Cookie">
+      <p>Strawberry Cookie</p>
+      <button onclick="addToCart('Strawberry Cookie', 140, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/pck.jpg" alt="Pistacchio and Cream Cookie">
+      <p>Pistacchio and Cream Cookie</p>
+      <button onclick="addToCart('Pistacchio and Cream Cookie', 150, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/smoresck.jpg" alt="Smores Cookies">
+      <p>Smores Cookies</p>
+      <button onclick="addToCart('Smores Cookies', 160, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/charmsck.jpg" alt="Lucky Charms Cookie">
+      <p>Lucky Charms Cookie</p>
+      <button onclick="addToCart('Lucky Charms Cookie', 170, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/oreock.jpg" alt="Oreo Cookie">
+      <p>Oreo Cookie</p>
+      <button onclick="addToCart('Oreo Cookie', 180, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/pbck.jpg" alt="Peanut Butter and Brownie Cookie">
+      <p>Peanut Butter and Brownie Cookie</p>
+      <button onclick="addToCart('Peanut Butter and Brownie Cookie', 190, this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Item added to cart!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
