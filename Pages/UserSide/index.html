@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sweet Matcha Delights - Artisan Desserts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="cursor-trail"></div>
+  
+  <header class="glass-header">
+    <div class="header-content">
+      <h1 class="logo">
+        <span class="logo-icon">🍃</span>
+        Sweet Matcha
+        <span class="logo-sparkle">✨</span>
+      </h1>
+      <nav class="nav-menu">
+        <a href="chatbot.html" class="nav-link">
+          <span class="nav-icon">🤖</span>
+          Chatbot
+        </a>
+        <a href="cart.html" class="nav-link">
+          <span class="nav-icon">🛒</span>
+          Cart
+        </a>
+        <a href="index.html" class="nav-link active">
+          <span class="nav-icon">🏠</span>
+          Home
+        </a>
+        <a href="shop.html" class="nav-link">
+          <span class="nav-icon">🍰</span>
+          Shop
+        </a>
+        <a href="aboutus.html" class="nav-link">
+          <span class="nav-icon">💚</span>
+          About
+        </a>
+        <a href="contactus.html" class="nav-link">
+          <span class="nav-icon">📞</span>
+          Contact
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="hero-bg-animation"></div>
+    <div class="hero-content">
+      <h2 class="hero-title">
+        Exquisite Desserts
+        <span class="highlight-text">Infused with Matcha Magic</span>
+      </h2>
+      <p class="hero-subtitle">
+        Handcrafted with passion, served with love. 
+        Experience the perfect harmony of traditional matcha and modern dessert artistry.
+      </p>
+      <button class="cta-button" onclick="scrollToSection('desserts')">
+        <span>Explore Our Creations</span>
+        <div class="button-glow"></div>
+      </button>
+    </div>
+    <div class="floating-elements">
+      <div class="floating-element">🌸</div>
+      <div class="floating-element">🍃</div>
+      <div class="floating-element">✨</div>
+      <div class="floating-element">🧁</div>
+      <div class="floating-element">🍵</div>
+    </div>
+  </section>
+
+  <section class="slideshow-section">
+    <div class="slideshow-container">
+      <div class="slides active">
+        <div class="slide-content">
+          <div class="slide-placeholder slide-1">
+            <div class="slide-text">
+              <h3>Artisan Cupcakes</h3>
+              <p>Delicate flavors meet artistic presentation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slides">
+        <div class="slide-content">
+          <div class="slide-placeholder slide-2">
+            <div class="slide-text">
+              <h3>Premium Matcha</h3>
+              <p>Sourced from the finest tea gardens</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slides">
+        <div class="slide-content">
+          <div class="slide-placeholder slide-3">
+            <div class="slide-text">
+              <h3>Sweet Perfection</h3>
+              <p>Every bite is a moment of pure bliss</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slides">
+        <div class="slide-content">
+          <div class="slide-placeholder slide-4">
+            <div class="slide-text">
+              <h3>Handcrafted Love</h3>
+              <p>Made fresh daily with premium ingredients</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-indicators">
+        <span class="indicator active" data-slide="0"></span>
+        <span class="indicator" data-slide="1"></span>
+        <span class="indicator" data-slide="2"></span>
+        <span class="indicator" data-slide="3"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="desserts" class="desserts-section">
+    <div class="section-header">
+      <h2 class="section-title">
+        <span class="title-decoration">✨</span>
+        Signature Creations
+        <span class="title-decoration">✨</span>
+      </h2>
+      <p class="section-subtitle">
+        Discover our most beloved desserts, each crafted with premium ingredients and artistic flair
+      </p>
+    </div>
+
+    <div class="dessert-grid">
+      <div class="dessert-card" data-flavor="strawberry">
+        <div class="card-image">
+          <div class="image-placeholder pink-gradient">
+            <div class="card-emoji">🧁</div>
+          </div>
+          <div class="card-overlay">
+            <button class="quick-add">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Strawberry Matcha Cupcake</h3>
+          <p>Fluffy vanilla sponge with creamy matcha buttercream, topped with fresh strawberry compote and delicate matcha powder dusting.</p>
+          <div class="card-footer">
+            <span class="price">$4.99</span>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(127)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dessert-card" data-flavor="matcha">
+        <div class="card-image">
+          <div class="image-placeholder green-gradient">
+            <div class="card-emoji">🍩</div>
+          </div>
+          <div class="card-overlay">
+            <button class="quick-add">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Glazed Matcha Donut</h3>
+          <p>Soft, pillowy donut infused with ceremonial-grade matcha, finished with a glossy matcha glaze and toasted sesame seeds.</p>
+          <div class="card-footer">
+            <span class="price">$3.49</span>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(89)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dessert-card" data-flavor="chocolate">
+        <div class="card-image">
+          <div class="image-placeholder brown-gradient">
+            <div class="card-emoji">🍦</div>
+          </div>
+          <div class="card-overlay">
+            <button class="quick-add">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Artisan Chocolate Ice Cream</h3>
+          <p>Rich, velvety chocolate ice cream made with Belgian cocoa, swirled with matcha ribbons for an unexpected flavor journey.</p>
+          <div class="card-footer">
+            <span class="price">$5.99</span>
+            <div class="rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-count">(203)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dessert-card" data-flavor="waffle">
+        <div class="card-image">
+          <div class="image-placeholder yellow-gradient">
+            <div class="card-emoji">🧇</div>
+          </div>
+          <div class="card-overlay">
+            <button class="quick-add">Add to Cart</button>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Golden Matcha Waffles</h3>
+          <p>Crispy-edged, fluffy-centered waffles served warm with matcha-infused maple syrup, whipped cream, and candied matcha leaves.</p>
+          <div class="card-footer">
+            <span class="price">$7.99</span>
+            <div class="rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-count">(156)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials-section">
+    <div class="testimonial-container">
+      <h2 class="testimonial-title">What Our Customers Say</h2>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          <p>"The matcha desserts here are absolutely divine! The perfect balance of sweetness and that earthy matcha flavor. I'm completely addicted!"</p>
+          <div class="testimonial-author">
+            <span class="author-name">Sarah M.</span>
+            <span class="author-rating">★★★★★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="modern-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Sweet Matcha</h3>
+        <p>Crafting moments of sweetness since 2020</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="shop.html">Shop</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">📷</a>
+          <a href="#" class="social-link">🐦</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Sweet Matcha Delights. All rights reserved. Made with 💚 and lots of matcha.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
