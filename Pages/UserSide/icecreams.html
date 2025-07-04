@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ice Creams - Sweet Matcha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Sweet Matcha</a>
+    <div class="nav-links">
+      <a href="chatbot.html"><b>Chatbot</b></a>
+      <a href="cart.html"><b>Your Cart</b></a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="aboutus.html">About</a>
+      <a href="contactus.html">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1 class="fade-in">Ice Creams</h1>
+  </header>
+
+  <h2 class="fade-in-delayed">Ice Creams</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/vanic.jpg" alt="Vanilla Icecream">
+      <p>Vanilla Icecream</p>
+      <button onclick="addToCart('Vanilla Icecream', 120, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/matchaic.jpg" alt="Matcha Icecream">
+      <p>Matcha Icecream</p>
+      <button onclick="addToCart('Matcha Icecream', 130, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/sbic.jpg" alt="Strawberry Icecream">
+      <p>Strawberry Icecream</p>
+      <button onclick="addToCart('Strawberry Icecream', 140, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/chocoic.jpg" alt="Chocolate Icecream">
+      <p>Chocolate Icecream</p>
+      <button onclick="addToCart('Chocolate Icecream', 150, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/rvic.jpg" alt="Red Velvet Icecream">
+      <p>Red Velvet Icecream</p>
+      <button onclick="addToCart('Red Velvet Icecream', 160, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/alic.jpg" alt="Almond Cream Icecream">
+      <p>Almond Cream Icecream</p>
+      <button onclick="addToCart('Almond Cream Icecream', 170, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/oreoic.jpg" alt="Oreo Icecream">
+      <p>Oreo Icecream</p>
+      <button onclick="addToCart('Oreo Icecream', 180, this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <h2 class="fade-in-delayed">Seasonal & Specials</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/mangoic.jpg" alt="Mango Icecream">
+      <p>Mango Icecream</p>
+      <button onclick="addToCart('Mango Icecream', 190, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/wmic.jpg" alt="Watermelon Icecream">
+      <p>Watermelon Icecream</p>
+      <button onclick="addToCart('Watermelon Icecream', 200, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/berryic.jpg" alt="Berry Punch Icecream">
+      <p>Berry Punch Icecream</p>
+      <button onclick="addToCart('Berry Punch Icecream', 210, this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Item added to cart!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

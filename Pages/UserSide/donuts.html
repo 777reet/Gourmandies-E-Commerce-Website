@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Donuts - Sweet Matcha</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Sweet Matcha</a>
+    <div class="nav-links">
+      <a href="chatbot.html"><b>Chatbot</b></a>
+      <a href="cart.html"><b>Your Cart</b></a>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="aboutus.html">About</a>
+      <a href="contactus.html">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1 class="fade-in">Donut Mania</h1>
+  </header>
+
+  <h2 class="fade-in-delayed">Regular Donuts</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/matchadn.jpg" alt="Matcha Donut">
+      <p>Matcha Donut</p>
+      <button onclick="addToCart('Matcha Donut', 100, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/classicdn.jpg" alt="Classic Donut">
+      <p>Classic Donut</p>
+      <button onclick="addToCart('Classic Donut', 80, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/sbdn.jpg" alt="Strawberry Donut">
+      <p>Strawberry Donut</p>
+      <button onclick="addToCart('Strawberry Donut', 90, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/kkdn.jpg" alt="Matcha Kitkat Donut">
+      <p>Matcha Kitkat Donut</p>
+      <button onclick="addToCart('Matcha Kitkat Donut', 120, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/gldn.jpg" alt="Glazed Donut">
+      <p>Glazed Donut</p>
+      <button onclick="addToCart('Glazed Donut', 70, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/bsdn.jpg" alt="Biscoff Donut">
+      <p>Biscoff Donut</p>
+      <button onclick="addToCart('Biscoff Donut', 110, this)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/rvdn.jpg" alt="Red Velvet Donut">
+      <p>Red Velvet Donut</p>
+      <button onclick="addToCart('Red Velvet Donut', 140, this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <h2 class="fade-in-delayed">Seasonal & Specials</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/mangodn.jpg" alt="Mango Donut">
+      <p>Mango Donut</p>
+      <button onclick="addToCart('Mango Donut', 130, this)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Item added to cart!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
