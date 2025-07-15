@@ -1,91 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>waffles - Sweet Matcha</title>
-    <link rel="stylesheet" href="../css/waffles.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
 
-</head>
-<body>
-  <!-- Animated Background Particles -->
-  <div class="particle-bg" id="particleBg"></div>
+    <title>Waffles</title>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Gourmandises</a>
-      <div class="nav-links">
-       <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="shop.html" class="nav-link">Desserts</a>
-                <a href="aboutus.html" class="nav-link">Our Story</a>
-                <a href="contactus.html" class="nav-link">Contact</a>
-            </div>
+    <link rel="stylesheet" href="../css/waffles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  </head>
+  <body>
+    <!-- Animated Background Particles -->
+    <div class="particle-bg" id="particleBg"></div>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo">Gourmandises</a>
+        <div class="nav-links">
+          <div class="nav-links">
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="shop.html" class="nav-link">Bakery</a>
+            <a href="aboutus.html" class="nav-link">Our Story</a>
+            <a href="contactus.html" class="nav-link">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+      <div class="floating-waffles">
+        <div class="floating-item">🍪</div>
+        <div class="floating-item">🧁</div>
+        <div class="floating-item">🍓</div>
+        <div class="floating-item">🌸</div>
+      </div>
+      <h1>Waffle Heaven</h1>
+    </header>
+
+    <h2>Delicious Waffles</h2>
+
+    <!-- Grid -->
+    <div class="grid">
+      <div class="card">
+        <img src="assets/images/ccck.jpg" alt="Chocolate Chip waffle" />
+        <p>Chocolate Chip waffle</p>
+        <button onclick="addToCart('Chocolate Chip waffle', 120, this)">
+          Add to Cart - ₹400
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/cherryck.jpg" alt="Cherry Jam waffle" />
+        <p>Cherry Jam waffle</p>
+        <button onclick="addToCart('Cherry Jam waffle', 130, this)">
+          Add to Cart - ₹350
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/sbck.jpg" alt="Strawberry waffle" />
+        <p>Strawberry waffle</p>
+        <button onclick="addToCart('Strawberry waffle', 140, this)">
+          Add to Cart - ₹350
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/pck.jpg" alt="Pistachio and Cream waffle" />
+        <p>Pistachio and Cream waffle</p>
+        <button onclick="addToCart('Pistachio and Cream waffle', 150, this)">
+          Add to Cart - ₹350
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/smoresck.jpg" alt="Smores waffles" />
+        <p>Smores waffles</p>
+        <button onclick="addToCart('Smores waffles', 160, this)">
+          Add to Cart - ₹350
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/charmsck.jpg" alt="Lucky Charms waffle" />
+        <p>Lucky Charms waffle</p>
+        <button onclick="addToCart('Lucky Charms waffle', 170, this)">
+          Add to Cart - ₹350
+        </button>
+      </div>
+      <div class="card">
+        <img src="assets/images/oreock.jpg" alt="Oreo waffle" />
+        <p>Oreo waffle</p>
+        <button onclick="addToCart('Oreo waffle', 180, this)">
+          Add to Cart - ₹200
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="assets/images/pbck.jpg"
+          alt="Peanut Butter and Brownie waffle"
+        />
+        <p>Peanut Butter and Brownie waffle</p>
+        <button
+          onclick="addToCart('Peanut Butter and Brownie waffle', 190, this)"
+        >
+          Add to Cart - ₹200
+        </button>
       </div>
     </div>
-  </nav>
 
-  <!-- Header -->
-  <header>
-    <div class="floating-waffles">
-      <div class="floating-item">🍪</div>
-      <div class="floating-item">🧁</div>
-      <div class="floating-item">🍓</div>
-      <div class="floating-item">🌸</div>
-    </div>
-    <h1>waffle Heaven</h1>
-  </header>
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Item added to cart! 🍪</div>
 
-  <h2>Delicious waffles</h2>
-
-  <!-- Grid -->
-  <div class="grid">
-    <div class="card">
-      <img src="assets/images/ccck.jpg" alt="Chocolate Chip waffle">
-      <p>Chocolate Chip waffle</p>
-      <button onclick="addToCart('Chocolate Chip waffle', 120, this)">Add to Cart - ₹120</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/cherryck.jpg" alt="Cherry Jam waffle">
-      <p>Cherry Jam waffle</p>
-      <button onclick="addToCart('Cherry Jam waffle', 130, this)">Add to Cart - ₹130</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/sbck.jpg" alt="Strawberry waffle">
-      <p>Strawberry waffle</p>
-      <button onclick="addToCart('Strawberry waffle', 140, this)">Add to Cart - ₹140</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/pck.jpg" alt="Pistachio and Cream waffle">
-      <p>Pistachio and Cream waffle</p>
-      <button onclick="addToCart('Pistachio and Cream waffle', 150, this)">Add to Cart - ₹150</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/smoresck.jpg" alt="Smores waffles">
-      <p>Smores waffles</p>
-      <button onclick="addToCart('Smores waffles', 160, this)">Add to Cart - ₹160</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/charmsck.jpg" alt="Lucky Charms waffle">
-      <p>Lucky Charms waffle</p>
-      <button onclick="addToCart('Lucky Charms waffle', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/oreock.jpg" alt="Oreo waffle">
-      <p>Oreo waffle</p>
-      <button onclick="addToCart('Oreo waffle', 180, this)">Add to Cart - ₹180</button>
-    </div>
-    <div class="card">
-      <img src="assets/images/pbck.jpg" alt="Peanut Butter and Brownie waffle">
-      <p>Peanut Butter and Brownie waffle</p>
-      <button onclick="addToCart('Peanut Butter and Brownie waffle', 190, this)">Add to Cart - ₹190</button>
-    </div>
-  </div>
-
-  <!-- Toast Notification -->
-  <div id="toast" class="toast">Item added to cart! 🍪</div>
-
-  <script src="../Js/waffles.js"></script>
-</body>
+    <script src="../Js/waffles.js"></script>
+  </body>
 </html>
