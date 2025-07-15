@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ice creams - Sweet Matcha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 50%, #fff0f5 100%);
+      overflow-x: hidden;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Animated Background Particles */
+    .particle-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(144, 238, 144, 0.6);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(2n) {
+      background: rgba(255, 182, 193, 0.6);
+      animation-delay: -2s;
+    }
+
+    .particle:nth-child(3n) {
+      background: rgba(255, 248, 220, 0.8);
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 0.7;
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2d5016;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .logo::before {
+      content: '🍃';
+      font-size: 2rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #2d5016;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+    }
+
+    .nav-links a:hover {
+      background: linear-gradient(45deg, #90ee90, #ffb6c1);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Header */
+    header {
+      margin-top: 100px;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-ice creams {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .floating-item {
+      position: absolute;
+      font-size: 2rem;
+      animation: floatAround 8s ease-in-out infinite;
+      opacity: 0.7;
+    }
+
+    .floating-item:nth-child(1) {
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-item:nth-child(2) {
+      top: 60%;
+      right: 15%;
+      animation-delay: -2s;
+    }
+
+    .floating-item:nth-child(3) {
+      bottom: 30%;
+      left: 20%;
+      animation-delay: -4s;
+    }
+
+    .floating-item:nth-child(4) {
+      top: 40%;
+      right: 30%;
+      animation-delay: -6s;
+    }
+
+    @keyframes floatAround {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-20px) rotate(90deg);
+      }
+      50% {
+        transform: translateY(-40px) rotate(180deg);
+      }
+      75% {
+        transform: translateY(-20px) rotate(270deg);
+      }
+    }
+
+    h1 {
+      font-size: 4rem;
+      background: linear-gradient(45deg, #2d5016, #ff69b4, #32cd32);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: titleGlow 3s ease-in-out infinite, fadeInUp 1s ease-out;
+    }
+
+    @keyframes titleGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(50, 205, 50, 0.5));
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #2d5016;
+      text-align: center;
+      margin: 2rem 0;
+      position: relative;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(45deg, #90ee90, #ffb6c1);
+      border-radius: 2px;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Card Styles */
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(50px);
+      opacity: 0;
+      animation: cardSlideIn 0.8s ease-out forwards;
+    }
+
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+    .card:nth-child(7) { animation-delay: 0.7s; }
+    .card:nth-child(8) { animation-delay: 0.8s; }
+
+    @keyframes cardSlideIn {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-15px) scale(1.05);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card p {
+      font-size: 1.3rem;
+      color: #2d5016;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .card button {
+      background: linear-gradient(45deg, #90ee90, #ffb6c1);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .card button:hover::before {
+      left: 100%;
+    }
+
+    .card button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card button:active {
+      transform: translateY(0);
+      animation: buttonPulse 0.3s ease;
+    }
+
+    @keyframes buttonPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background: linear-gradient(45deg, #90ee90, #ffb6c1);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      font-weight: bold;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 1001;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .toast.show {
+      transform: translateX(0);
+      animation: toastSlide 3s ease-in-out;
+    }
+
+    @keyframes toastSlide {
+      0%, 100% { transform: translateX(100%); }
+      10%, 90% { transform: translateX(0); }
+    }
+
+    /* Sparkle Effect */
+    @keyframes sparkle {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1) rotate(180deg);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated Background Particles -->
+  <div class="particle-bg" id="particleBg"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Sweet Matcha</a>
+      <div class="nav-links">
+        <a href="chatbot.html"><b>Chatbot</b></a>
+        <a href="cart.html"><b>Your Cart</b></a>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="aboutus.html">About</a>
+        <a href="contactus.html">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="floating-ice creams">
+      <div class="floating-item">🍪</div>
+      <div class="floating-item">🧁</div>
+      <div class="floating-item">🍓</div>
+      <div class="floating-item">🌸</div>
+    </div>
+    <h1>ice cream Heaven</h1>
+  </header>
+
+  <h2>Delicious ice creams</h2>
+
+  <!-- Grid -->
+  <div class="grid">
+    <div class="card">
+      <img src="assets/images/ccck.jpg" alt="Chocolate Chip ice cream">
+      <p>Chocolate Chip ice cream</p>
+      <button onclick="addToCart('Chocolate Chip ice cream', 120, this)">Add to Cart - ₹120</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/cherryck.jpg" alt="Cherry Jam ice cream">
+      <p>Cherry Jam ice cream</p>
+      <button onclick="addToCart('Cherry Jam ice cream', 130, this)">Add to Cart - ₹130</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/sbck.jpg" alt="Strawberry ice cream">
+      <p>Strawberry ice cream</p>
+      <button onclick="addToCart('Strawberry ice cream', 140, this)">Add to Cart - ₹140</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/pck.jpg" alt="Pistachio and Cream ice cream">
+      <p>Pistachio and Cream ice cream</p>
+      <button onclick="addToCart('Pistachio and Cream ice cream', 150, this)">Add to Cart - ₹150</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/smoresck.jpg" alt="Smores ice creams">
+      <p>Smores ice creams</p>
+      <button onclick="addToCart('Smores ice creams', 160, this)">Add to Cart - ₹160</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/charmsck.jpg" alt="Lucky Charms ice cream">
+      <p>Lucky Charms ice cream</p>
+      <button onclick="addToCart('Lucky Charms ice cream', 170, this)">Add to Cart - ₹170</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/oreock.jpg" alt="Oreo ice cream">
+      <p>Oreo ice cream</p>
+      <button onclick="addToCart('Oreo ice cream', 180, this)">Add to Cart - ₹180</button>
+    </div>
+    <div class="card">
+      <img src="assets/images/pbck.jpg" alt="Peanut Butter and Brownie ice cream">
+      <p>Peanut Butter and Brownie ice cream</p>
+      <button onclick="addToCart('Peanut Butter and Brownie ice cream', 190, this)">Add to Cart - ₹190</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Item added to cart! 🍪</div>
+
+  <script>
+    // Create particle background
+    function createParticles() {
+      const particleBg = document.getElementById('particleBg');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        particleBg.appendChild(particle);
+      }
+    }
+
+    // Add sparkle effect
+    function createSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      sparkle.style.width = '8px';
+      sparkle.style.height = '8px';
+      sparkle.style.background = 'radial-gradient(circle, #fff, #ffb6c1)';
+      sparkle.style.borderRadius = '50%';
+      sparkle.style.pointerEvents = 'none';
+      sparkle.style.zIndex = '9999';
+      sparkle.style.animation = 'sparkle 1s ease-out forwards';
+      
+      document.body.appendChild(sparkle);
+      
+      setTimeout(() => {
+        sparkle.remove();
+      }, 1000);
+    }
+
+    // Add to cart functionality
+    function addToCart(name, price, button) {
+      // Create sparkle effect
+      const rect = button.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => {
+          createSparkle(
+            x + (Math.random() - 0.5) * 50,
+            y + (Math.random() - 0.5) * 50
+          );
+        }, i * 100);
+      }
+
+      // Button animation
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = 'scale(1)';
+      }, 150);
+
+      // Show toast
+      const toast = document.getElementById('toast');
+      toast.textContent = `${name} added to cart! 🍪`;
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+
+      // Store in cart (you can implement localStorage here)
+      console.log(`Added ${name} (₹${price}) to cart`);
+    }
+
+    // Parallax effect for floating elements
+    function setupParallax() {
+      const floatingItems = document.querySelectorAll('.floating-item');
+      
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        floatingItems.forEach((item, index) => {
+          const speed = 0.5 + (index * 0.1);
+          item.style.transform = `translateY(${rate * speed}px)`;
+        });
+      });
+    }
+
+    // Enhanced card hover effects
+    function setupCardEffects() {
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-15px) scale(1.05)';
+          card.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.2)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0) scale(1)';
+          card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+        });
+      });
+    }
+
+    // Add click sparkle effect to entire page
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('button')) {
+        createSparkle(e.clientX, e.clientY);
+      }
+    });
+
+    // Initialize everything
+    document.addEventListener('DOMContentLoaded', () => {
+      createParticles();
+      setupParallax();
+      setupCardEffects();
+    });
+
+    // Add random particles periodically
+    setInterval(() => {
+      if (Math.random() < 0.1) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.animationDelay = '0s';
+        particle.style.animationDuration = '6s';
+        document.getElementById('particleBg').appendChild(particle);
+        
+        setTimeout(() => {
+          particle.remove();
+        }, 6000);
+      }
+    }, 5000);
+  </script>
+</body>
+</html>

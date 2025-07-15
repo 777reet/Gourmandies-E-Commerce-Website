@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home – Sweet Matcha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sweet Matcha – matcha desserts, handcrafted delights, premium quality." />
+  <style>
+    /* Base + Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Georgia', serif; background: #fdfdfd; color:#333; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width:100%; display:block; }
+
+    /* -------- Particle BG (reuse from About) -------- */
+    .particle-bg {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;}
+    .particle {position:absolute;width:8px;height:8px;background:rgba(144,238,144,0.6);border-radius:50%;animation:float 6s ease-in-out infinite;}
+    .particle:nth-child(2n){background:rgba(255,182,193,0.6);animation-delay:-2s;}
+    .particle:nth-child(3n){background:rgba(255,248,220,0.8);animation-delay:-4s;}
+    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px) rotate(180deg);opacity:0.7;}}
+
+    /* ===== Navbar ===== */
+    .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); box-shadow:0 4px 30px rgba(0,0,0,0.1); z-index:1000; }
+    .nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem;}
+    .logo{font-size:1.8rem;font-weight:bold;color:#2d5016;display:flex;align-items:center;gap:0.5rem;}
+    .logo-icon{font-size:2rem;animation:bounce 2s infinite;}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-10px);}60%{transform:translateY(-5px);}}
+    .nav-links{display:flex;gap:2rem;}
+    .nav-link{padding:0.5rem 1rem;border-radius:25px;transition:0.3s;}
+    .nav-link:hover, .nav-link.active{background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;}
+
+    /* ===== Mobile Menu ===== */
+    .mobile-menu-icon{display:none;font-size:1.8rem;cursor:pointer;}
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .mobile-menu-icon{display:block;}
+      .mobile-menu{position: fixed; top: 0; right: -300px; width: 250px; height: 100%; background: white; box-shadow:-5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s;}
+      .mobile-menu.open{right:0;}
+      .mobile-menu a {display:block;padding:1rem; border-bottom:1px solid #eee;}
+    }
+
+    /* ===== Hero Carousel ===== */
+    .hero-carousel{position:relative;height:100vh;overflow:hidden;}
+    .hero-slide{position:absolute;top:0;left:100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#fff;background-size:cover;background-position:center;transition:left 0.8s ease;}
+    .hero-slide.active{left:0;}
+    .hero-title{font-size:3.5rem;text-shadow:0 4px 15px rgba(0,0,0,0.5);}
+    .hero-sub{font-size:1.3rem;margin:1rem 0;}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.4);color:#fff;border:none;padding:1rem;font-size:1.5rem;cursor:pointer;border-radius:50%;z-index:2;}
+    .carousel-btn:hover{background:rgba(0,0,0,0.6);}
+    .carousel-btn.prev{left:1rem;}
+    .carousel-btn.next{right:1rem;}
+
+    /* ===== Promo Buttons ===== */
+    .promo-bar{display:flex;justify-content:center;gap:1rem;padding:2rem;background:#fff5f8;}
+    .promo-btn{padding:1rem 2rem;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;border:none;border-radius:30px;cursor:pointer;transition:0.3s;}
+    .promo-btn:hover{transform:scale(1.05);}
+
+    /* ===== Features ===== */
+    .features { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:4rem 2rem; }
+    .feature {background: #fff; border-radius:20px;padding:2rem;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:transform 0.3s;cursor:pointer;}
+    .feature:hover{transform:translateY(-10px);}
+    .feature-icon{font-size:3rem;margin-bottom:1rem;}
+    .feature-title{font-size:1.5rem;color:#2d5016;margin-bottom:0.5rem;}
+    .feature-desc{color:#666;line-height:1.6;}
+
+    /* ===== Testimonials ===== */
+    .testimonials{position:relative;padding:4rem 2rem;background:#f9fff5;}
+    .testimonial-slide{display:none;text-align:center;max-width:800px;margin:0 auto;}
+    .testimonial-slide.active{display:block;}
+    .testimonial-text{font-style:italic;margin-bottom:1rem;}
+    .testimonial-author{font-weight:bold;color:#2d5016;}
+    .testimonial-nav{margin-top:1.5rem;text-align:center;display:flex;justify-content:center;gap:1rem;}
+    .testimonial-nav span{cursor:pointer;width:12px;height:12px;border-radius:50%;background:#ccc;display:inline-block;transition:0.3s;}
+    .testimonial-nav span.active{background:#2d5016;}
+
+    /* ===== Newsletter ===== */
+    .newsletter{padding:4rem 2rem;text-align:center;background:#fff0f5;}
+    .newsletter input[type="email"]{padding:1rem;width:300px;max-width:90%;border:2px solid #ccc;border-radius:30px;margin-right:1rem;}
+    .newsletter button{padding:1rem 2rem;border:none;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;border-radius:30px;cursor:pointer;transition:0.3s;}
+    .newsletter button:hover{transform:scale(1.05);}
+
+    /* ===== Footer ===== */
+    .footer{background:linear-gradient(135deg,#2d5016,#1a3d0a);color:#fff;text-align:center;padding:3rem 2rem;}
+    .footer-social span{font-size:1.5rem;animation:wiggle 2s ease-in-out infinite;}
+
+    /* ===== Floating Chat & Top Button ===== */
+    .chat-btn,.top-btn{position:fixed;width:60px;height:60px;border:none;border-radius:50%;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;font-size:1.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+    .chat-btn{bottom:90px;right:20px;}
+    .top-btn{bottom:20px;right:20px;display:none;}
+
+    /* ===== Responsive ===== */
+    @media(max-width:768px){
+      .hero-title{font-size:2.5rem;}
+      .hero-sub{font-size:1rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle BG -->
+  <div class="particle-bg" id="particleBg"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo"><span class="logo-icon">🍃</span>Sweet Matcha</a>
+      <div class="nav-links">
+        <a href="shop.html" class="nav-link">Shop</a>
+        <a href="aboutus.html" class="nav-link">About</a>
+        <a href="contactus.html" class="nav-link">Contact</a>
+        <a href="cart.html" class="nav-link">Cart</a>
+      </div>
+      <div class="mobile-menu-icon">☰</div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="shop.html">Shop</a><a href="aboutus.html">About</a><a href="contactus.html">Contact</a><a href="cart.html">Cart</a>
+  </div>
+
+  <!-- Hero Carousel -->
+  <section class="hero-carousel" aria-label="Hero Carousel">
+    <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
+    <button class="carousel-btn next" aria-label="Next slide">›</button>
+
+    <div class="hero-slide active" style="background-image:url('img/matcha-cupcake.jpg');">
+      <h1 class="hero-title">Matcha Magic</h1>
+      <p class="hero-sub">Indulge in pastel happiness.</p>
+    </div>
+    <div class="hero-slide" style="background-image:url('img/matcha-doughnut.jpg');">
+      <h1 class="hero-title">Sweet & Fresh</h1>
+      <p class="hero-sub">Handcrafted with love.</p>
+    </div>
+    <div class="hero-slide" style="background-image:url('img/matcha-waffle.jpg');">
+      <h1 class="hero-title">Crunchy Joy</h1>
+      <p class="hero-sub">Perfect bites for your moments.</p>
+    </div>
+  </section>
+
+  <!-- Promo Buttons -->
+  <div class="promo-bar">
+    <button class="promo-btn" onclick="location.href='shop.html'">Shop Now</button>
+    <button class="promo-btn">Get 10% Off – Use Code LOVE10</button>
+  </div>
+
+  <!-- What We Offer -->
+  <section class="features" aria-labelledby="featuresTitle">
+    <h2 id="featuresTitle" style="grid-column:1/-1;text-align:center;font-size:2rem;margin-bottom:1.5rem;color:#2d5016;">What We Offer</h2>
+    <div class="feature"><span class="feature-icon">🍰</span><h3 class="feature-title">Cupcakes</h3><p class="feature-desc">Soft, moist cupcakes bursting with flavours and pastel swirl toppings.</p></div>
+    <div class="feature"><span class="feature-icon">🧁</span><h3 class="feature-title">Ice Cream</h3><p class="feature-desc">Creamy matcha ice cream made with real ingredients and love.</p></div>
+    <div class="feature"><span class="feature-icon">🍩</span><h3 class="feature-title">Donuts</h3><p class="feature-desc">Fluffy, glazed delights sprinkled with joy.</p></div>
+    <div class="feature"><span class="feature-icon">🧇</span><h3 class="feature-title">Waffles</h3><p class="feature-desc">Crispy-on-the-outside, soft-on-the-inside waffles infused with matcha.</p></div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" aria-labelledby="testiTitle">
+    <h2 id="testiTitle" style="text-align:center;font-size:2rem;color:#2d5016;">What Customers Say</h2>
+    <div class="testimonial-slide active">
+      <p class="testimonial-text">"Absolutely in love with the matcha cupcakes! The pastel swirl is perfection."</p>
+      <p class="testimonial-author">— Meera, Mumbai</p>
+    </div>
+    <div class="testimonial-slide"><p class="testimonial-text">"Delivery was so quick, and the ice-cream melted perfectly on my tongue."</p><p class="testimonial-author">— Aarav, Pune</p></div>
+    <div class="testimonial-slide"><p class="testimonial-text">"Sweet Matcha is my weekend delight. Every bite is happiness!"</p><p class="testimonial-author">— Priya, Delhi</p></div>
+    <div class="testimonial-nav"></div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" aria-labelledby="newsTitle">
+    <h2 id="newsTitle" style="font-size:2rem;color:#2d5016;">Join Our Sweet Club</h2>
+    <p>Get 10% off your first order and get updates on new flavors!</p>
+    <form onsubmit="event.preventDefault(); alert('Subscribed!');">
+      <input type="email" placeholder="Your email..." required />
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" aria-label="Footer">
+    <p>&copy; 2025 Sweet Matcha. All rights reserved.</p>
+    <div class="footer-social"><span>🍰 📸 💬</span></div>
+  </footer>
+
+  <!-- Chat + Back‑to‑Top -->
+  <button class="chat-btn" aria-label="Chat Support">💬</button>
+  <button class="top-btn" aria-label="Back to top">🡡</button>
+
+  <script>
+    // Reuse particle BG logic
+    function createParticles(){
+      const bg = document.getElementById('particleBg');
+      for(let i=0;i<40;i++){let p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';bg.appendChild(p);}
+    }
+    document.addEventListener('DOMContentLoaded',()=>{
+      createParticles();
+
+      // Mobile menu toggle
+      document.querySelector('.mobile-menu-icon').onclick = () => {
+        document.getElementById('mobileMenu').classList.toggle('open');
+      };
+
+      // Hero carousel
+      const slides=[...document.querySelectorAll('.hero-slide')];
+      let idx=0;
+      const next=()=>{slides[idx].classList.remove('active'); idx=(idx+1)%slides.length; slides[idx].classList.add('active');}
+      document.querySelector('.carousel-btn.next').onclick=next;
+      document.querySelector('.carousel-btn.prev').onclick=()=>{
+        slides[idx].classList.remove('active');
+        idx=(idx-1+slides.length)%slides.length;
+        slides[idx].classList.add('active');
+      };
+      setInterval(next,6000);
+
+      // Testimonials slider
+      const testSlides=[...document.querySelectorAll('.testimonial-slide')];
+      const nav=document.querySelector('.testimonial-nav');
+      testSlides.forEach((_,i)=>{
+        const dot=document.createElement('span');
+        if(i===0) dot.classList.add('active');
+        dot.onclick = ()=>{
+          testSlides.forEach(s=>s.classList.remove('active'));
+          nav.querySelectorAll('span').forEach(d=>d.classList.remove('active'));
+          testSlides[i].classList.add('active');
+          dot.classList.add('active');
+        }
+        nav.appendChild(dot);
+      });
+
+      // Back to top visibility
+      const topBtn=document.querySelector('.top-btn');
+      window.onscroll=()=>{topBtn.style.display = window.scrollY>300?'flex':'none';}
+      topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+    });
+  </script>
+</body>
+</html>
