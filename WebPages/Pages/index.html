@@ -1,234 +1,1595 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Home – Sweet Matcha</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sweet Matcha – matcha desserts, handcrafted delights, premium quality." />
-  <style>
-    /* Base + Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Georgia', serif; background: #fdfdfd; color:#333; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width:100%; display:block; }
+    <meta charset="UTF-8">
+    <title>Sweet Matcha - Where Dreams Meet Desserts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles and resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* -------- Particle BG (reuse from About) -------- */
-    .particle-bg {position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;}
-    .particle {position:absolute;width:8px;height:8px;background:rgba(144,238,144,0.6);border-radius:50%;animation:float 6s ease-in-out infinite;}
-    .particle:nth-child(2n){background:rgba(255,182,193,0.6);animation-delay:-2s;}
-    .particle:nth-child(3n){background:rgba(255,248,220,0.8);animation-delay:-4s;}
-    @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-20px) rotate(180deg);opacity:0.7;}}
+        body {
+            font-family: 'Georgia', serif;
+            /* Animated background gradient for the whole body */
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 30%, #fff0f5 60%, #f0fff0 100%);
+            background-size: 200% 200%; /* Make background larger for animation */
+            animation: backgroundPan 15s ease infinite alternate; /* Slow, mesmerizing pan */
+            overflow-x: hidden;
+            line-height: 1.7;
+            color: #333; /* Default text color */
+        }
 
-    /* ===== Navbar ===== */
-    .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); box-shadow:0 4px 30px rgba(0,0,0,0.1); z-index:1000; }
-    .nav-container{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem;}
-    .logo{font-size:1.8rem;font-weight:bold;color:#2d5016;display:flex;align-items:center;gap:0.5rem;}
-    .logo-icon{font-size:2rem;animation:bounce 2s infinite;}
-    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0);}40%{transform:translateY(-10px);}60%{transform:translateY(-5px);}}
-    .nav-links{display:flex;gap:2rem;}
-    .nav-link{padding:0.5rem 1rem;border-radius:25px;transition:0.3s;}
-    .nav-link:hover, .nav-link.active{background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;}
+        @keyframes backgroundPan {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
 
-    /* ===== Mobile Menu ===== */
-    .mobile-menu-icon{display:none;font-size:1.8rem;cursor:pointer;}
-    @media(max-width:768px){
-      .nav-links{display:none;}
-      .mobile-menu-icon{display:block;}
-      .mobile-menu{position: fixed; top: 0; right: -300px; width: 250px; height: 100%; background: white; box-shadow:-5px 0 15px rgba(0,0,0,0.1); transition: right 0.3s;}
-      .mobile-menu.open{right:0;}
-      .mobile-menu a {display:block;padding:1rem; border-bottom:1px solid #eee;}
-    }
+        /* Enhanced Animated Background */
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-    /* ===== Hero Carousel ===== */
-    .hero-carousel{position:relative;height:100vh;overflow:hidden;}
-    .hero-slide{position:absolute;top:0;left:100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#fff;background-size:cover;background-position:center;transition:left 0.8s ease;}
-    .hero-slide.active{left:0;}
-    .hero-title{font-size:3.5rem;text-shadow:0 4px 15px rgba(0,0,0,0.5);}
-    .hero-sub{font-size:1.3rem;margin:1rem 0;}
-    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.4);color:#fff;border:none;padding:1rem;font-size:1.5rem;cursor:pointer;border-radius:50%;z-index:2;}
-    .carousel-btn:hover{background:rgba(0,0,0,0.6);}
-    .carousel-btn.prev{left:1rem;}
-    .carousel-btn.next{right:1rem;}
+        .particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
 
-    /* ===== Promo Buttons ===== */
-    .promo-bar{display:flex;justify-content:center;gap:1rem;padding:2rem;background:#fff5f8;}
-    .promo-btn{padding:1rem 2rem;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;border:none;border-radius:30px;cursor:pointer;transition:0.3s;}
-    .promo-btn:hover{transform:scale(1.05);}
+        .particle:nth-child(1) { background: rgba(144, 238, 144, 0.8); }
+        .particle:nth-child(2) { background: rgba(255, 182, 193, 0.8); animation-delay: -2s; }
+        .particle:nth-child(3) { background: rgba(255, 248, 220, 0.9); animation-delay: -4s; }
+        .particle:nth-child(4) { background: rgba(221, 160, 221, 0.7); animation-delay: -6s; }
+        .particle:nth-child(5) { background: rgba(173, 216, 230, 0.6); animation-delay: -1s; }
+        .particle:nth-child(6) { background: rgba(255, 228, 196, 0.8); animation-delay: -3s; }
+        .particle:nth-child(7) { background: rgba(152, 251, 152, 0.7); animation-delay: -5s; }
+        .particle:nth-child(8) { background: rgba(255, 192, 203, 0.8); animation-delay: -7s; }
 
-    /* ===== Features ===== */
-    .features { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;padding:4rem 2rem; }
-    .feature {background: #fff; border-radius:20px;padding:2rem;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:transform 0.3s;cursor:pointer;}
-    .feature:hover{transform:translateY(-10px);}
-    .feature-icon{font-size:3rem;margin-bottom:1rem;}
-    .feature-title{font-size:1.5rem;color:#2d5016;margin-bottom:0.5rem;}
-    .feature-desc{color:#666;line-height:1.6;}
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            25% { transform: translateY(-40px) rotate(90deg); opacity: 0.8; }
+            50% { transform: translateY(-80px) rotate(180deg); opacity: 0.6; }
+            75% { transform: translateY(-40px) rotate(270deg); opacity: 0.8; }
+        }
 
-    /* ===== Testimonials ===== */
-    .testimonials{position:relative;padding:4rem 2rem;background:#f9fff5;}
-    .testimonial-slide{display:none;text-align:center;max-width:800px;margin:0 auto;}
-    .testimonial-slide.active{display:block;}
-    .testimonial-text{font-style:italic;margin-bottom:1rem;}
-    .testimonial-author{font-weight:bold;color:#2d5016;}
-    .testimonial-nav{margin-top:1.5rem;text-align:center;display:flex;justify-content:center;gap:1rem;}
-    .testimonial-nav span{cursor:pointer;width:12px;height:12px;border-radius:50%;background:#ccc;display:inline-block;transition:0.3s;}
-    .testimonial-nav span.active{background:#2d5016;}
+        /* Enhanced Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    /* ===== Newsletter ===== */
-    .newsletter{padding:4rem 2rem;text-align:center;background:#fff0f5;}
-    .newsletter input[type="email"]{padding:1rem;width:300px;max-width:90%;border:2px solid #ccc;border-radius:30px;margin-right:1rem;}
-    .newsletter button{padding:1rem 2rem;border:none;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;border-radius:30px;cursor:pointer;transition:0.3s;}
-    .newsletter button:hover{transform:scale(1.05);}
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 60px rgba(0, 0, 0, 0.15);
+        }
 
-    /* ===== Footer ===== */
-    .footer{background:linear-gradient(135deg,#2d5016,#1a3d0a);color:#fff;text-align:center;padding:3rem 2rem;}
-    .footer-social span{font-size:1.5rem;animation:wiggle 2s ease-in-out infinite;}
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-    /* ===== Floating Chat & Top Button ===== */
-    .chat-btn,.top-btn{position:fixed;width:60px;height:60px;border:none;border-radius:50%;background:linear-gradient(45deg,#90ee90,#ffb6c1);color:#fff;font-size:1.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
-    .chat-btn{bottom:90px;right:20px;}
-    .top-btn{bottom:20px;right:20px;display:none;}
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #2d5016;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.3s ease;
+        }
 
-    /* ===== Responsive ===== */
-    @media(max-width:768px){
-      .hero-title{font-size:2.5rem;}
-      .hero-sub{font-size:1rem;}
-    }
-  </style>
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 2.8rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-12px); }
+            60% { transform: translateY(-6px); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Epic Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            /* Subtle background animation for hero */
+            background: linear-gradient(135deg, rgba(232, 245, 232, 0.3) 0%, rgba(240, 248, 255, 0.3) 50%, rgba(255, 240, 245, 0.3) 100%);
+            background-size: 300% 300%;
+            animation: heroBackgroundShift 20s ease infinite alternate;
+        }
+
+        @keyframes heroBackgroundShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+            /* Added for parallax effect */
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 6rem;
+            background: linear-gradient(45deg, #2d5016, #ff69b4, #32cd32, #9370db);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: titleGlow 4s ease-in-out infinite, gradient 8s ease infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: -2px;
+            /* Added for more glow */
+            text-rendering: optimizeLegibility;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)); }
+            50% { filter: drop-shadow(0 0 40px rgba(50, 205, 50, 0.7)) drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)); }
+        }
+
+        .hero-subtitle {
+            font-size: 2rem;
+            color: #555;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            z-index: 1; /* Ensure button is above shimmer */
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+            z-index: -1; /* Place shimmer behind text */
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02); /* Added slight scale */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            background: linear-gradient(45deg, #7dd87d, #ff9db3);
+        }
+
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #e8f5e8, #fff0f5);
+            color: #2d5016;
+        }
+
+        .cta-button.secondary:hover {
+            background: linear-gradient(45deg, #d4edda, #f8d7da);
+        }
+
+        /* Enhanced Floating Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* Added for parallax effect */
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 3rem;
+            animation: floatAround 12s ease-in-out infinite;
+            opacity: 0.9;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        /* More varied animation delays and positions for new particles */
+        .floating-item:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-item:nth-child(2) { top: 60%; right: 15%; animation-delay: -2s; }
+        .floating-item:nth-child(3) { bottom: 25%; left: 20%; animation-delay: -4s; }
+        .floating-item:nth-child(4) { top: 30%; right: 25%; animation-delay: -6s; }
+        .floating-item:nth-child(5) { bottom: 45%; left: 60%; animation-delay: -8s; }
+        .floating-item:nth-child(6) { top: 70%; right: 40%; animation-delay: -10s; }
+        .floating-item:nth-child(7) { top: 45%; left: 35%; animation-delay: -3s; }
+        .floating-item:nth-child(8) { bottom: 60%; right: 60%; animation-delay: -7s; }
+        .floating-item:nth-child(9) { top: 5%; left: 50%; animation-delay: -1s; font-size: 2.5rem;} /* New */
+        .floating-item:nth-child(10) { bottom: 10%; left: 5%; animation-delay: -5s; font-size: 3.5rem;} /* New */
+        .floating-item:nth-child(11) { top: 80%; left: 25%; animation-delay: -9s; font-size: 2rem;} /* New */
+        .floating-item:nth-child(12) { top: 20%; right: 5%; animation-delay: -11s; font-size: 4rem;} /* New */
+
+
+        @keyframes floatAround {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-40px) rotate(90deg) scale(1.2); }
+            50% { transform: translateY(-80px) rotate(180deg) scale(0.8); }
+            75% { transform: translateY(-40px) rotate(270deg) scale(1.1); }
+        }
+
+        /* New Interactive Welcome Banner */
+        .welcome-banner {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.9));
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(144, 238, 144, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .welcome-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-title {
+            font-size: 3.5rem;
+            color: #2d5016;
+            margin-bottom: 1.5rem;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .welcome-text {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .feature-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: #90ee90;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); } /* Slightly less intense pulse for icons */
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #2d5016;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Featured Products */
+        .featured-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(240, 248, 255, 0.4));
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 20%, rgba(144, 238, 144, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 182, 193, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            color: #2d5016;
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            font-size: 1.4rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .product-card:hover::before {
+            left: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            border-color: #90ee90;
+        }
+
+        .product-emoji {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            display: block;
+            animation: pulse 3s infinite;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Pulse for products is a bit more pronounced */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .product-title {
+            font-size: 2rem;
+            color: #2d5016;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff69b4;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-button {
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .product-button:hover::before {
+            left: 100%;
+        }
+
+        .product-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* New Experience Section */
+        .experience-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #e8f5e8 0%, #fff0f5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .experience-text {
+            padding: 2rem;
+        }
+
+        .experience-title {
+            font-size: 3.5rem;
+            color: #2d5016;
+            margin-bottom: 2rem;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .experience-description {
+            font-size: 1.3rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .experience-features {
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+
+        .experience-features li {
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+            color: #555;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .experience-features li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: ripple 3s infinite;
+        }
+
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+        }
+
+        .experience-emoji {
+            position: absolute;
+            font-size: 6rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Enhanced Stats Section */
+        .stats-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.8), rgba(255, 240, 245, 0.8));
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            animation: pulse 2s infinite;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: #2d5016;
+            margin-bottom: 1rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Enhanced Testimonials */
+        .testimonials-section {
+            padding: 8rem 2rem;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 5rem;
+            color: #90ee90;
+            opacity: 0.4;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            border-color: #90ee90;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: white; /* Ensure avatar text is visible */
+        }
+
+        .author-info h4 {
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .author-info p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.3rem;
+        }
+
+        /* New Call-to-Action Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #2d5016, #1a3d0a);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(144, 238, 144, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(255, 182, 193, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button-large {
+            background: linear-gradient(45deg, #90ee90, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button-large::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button-large:hover::before {
+            left: 100%;
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button-large.outline {
+            background: transparent;
+            border: 2px solid #90ee90;
+            color: #90ee90;
+        }
+
+        .cta-button-large.outline:hover {
+            background: #90ee90;
+            color: white;
+        }
+
+        /* Enhanced Newsletter */
+        .newsletter-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #e8f5e8 0%, #fff0f5 100%);
+            text-align: center;
+            position: relative;
+        }
+
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-title {
+            font-size: 3rem;
+            color: #2d5016;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-description {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex-grow: 1;
+            max-width: 400px;
+            padding: 1rem 1.5rem;
+            border: 2px solid #90ee90;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: #ffb6c1;
+            box-shadow: 0 0 15px rgba(144, 238, 144, 0.5);
+        }
+
+        .newsletter-form button[type="submit"] {
+            background: linear-gradient(45deg, #ffb6c1, #ff69b4);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-form button[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #ff9db3, #ff5c99);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d5016;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-icon {
+            color: white;
+            font-size: 1.8rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .footer-text {
+            opacity: 0.7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+            .section-title {
+                font-size: 3rem;
+            }
+            .welcome-title, .experience-title, .cta-title, .newsletter-title {
+                font-size: 2.8rem;
+            }
+            .products-grid, .testimonials-grid, .stats-grid, .feature-highlights {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            .experience-content {
+                grid-template-columns: 1fr;
+            }
+            .experience-visual {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            .hero-description {
+                font-size: 1rem;
+            }
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .section-subtitle {
+                font-size: 1.2rem;
+            }
+            .product-card {
+                padding: 1.5rem;
+            }
+            .product-title {
+                font-size: 1.8rem;
+            }
+            .product-price {
+                font-size: 1.5rem;
+            }
+            .welcome-title, .experience-title, .cta-title, .newsletter-title {
+                font-size: 2.2rem;
+            }
+            .welcome-text, .experience-description, .cta-description, .newsletter-description {
+                font-size: 1rem;
+            }
+            .feature-card, .stat-card, .testimonial-card {
+                padding: 1.5rem;
+            }
+            .cta-button-large {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            .newsletter-form input[type="email"],
+            .newsletter-form button[type="submit"] {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            animation: fadeInScale 0.3s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .modal-message {
+            font-size: 1.3rem;
+            color: #2d5016;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #90ee90;
+        }
+
+    </style>
 </head>
 <body>
-  <!-- Particle BG -->
-  <div class="particle-bg" id="particleBg"></div>
+    <!-- Animated background particles -->
+    <div class="particle-bg"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="logo"><span class="logo-icon">🍃</span>Sweet Matcha</a>
-      <div class="nav-links">
-        <a href="shop.html" class="nav-link">Shop</a>
-        <a href="aboutus.html" class="nav-link">About</a>
-        <a href="contactus.html" class="nav-link">Contact</a>
-        <a href="cart.html" class="nav-link">Cart</a>
-      </div>
-      <div class="mobile-menu-icon">☰</div>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">🧁</span> Sweet Matcha
+            </a>
+            <div class="nav-links">
+                <a href="#hero" class="nav-link active">Home</a>
+                <a href="#featured" class="nav-link">Desserts</a>
+                <a href="#experience" class="nav-link">Our Story</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Sweet Matcha</h1>
+                <p class="hero-subtitle">Where Dreams Meet Desserts</p>
+                <p class="hero-description">Indulge in handcrafted delights, made with passion and the finest ingredients. Every bite is a journey to pure bliss.</p>
+                <div class="hero-cta">
+                    <a href="#featured" class="cta-button">Explore Desserts</a>
+                    <a href="#contact" class="cta-button secondary">Custom Orders</a>
+                </div>
+            </div>
+            <!-- Floating decorative elements -->
+            <div class="floating-elements">
+                <span class="floating-item">🍰</span>
+                <span class="floating-item">🍩</span>
+                <span class="floating-item">🍪</span>
+                <span class="floating-item">🍮</span>
+                <span class="floating-item">🍦</span>
+                <span class="floating-item">🍓</span>
+                <span class="floating-item">🍵</span>
+                <span class="floating-item">🍫</span>
+                <span class="floating-item">💖</span> <!-- Added new floating items -->
+                <span class="floating-item">✨</span>
+                <span class="floating-item">🍬</span>
+                <span class="floating-item">🧁</span>
+            </div>
+        </section>
+
+        <!-- Welcome Banner Section -->
+        <section class="welcome-banner">
+            <div class="welcome-content">
+                <h2 class="welcome-title">Welcome to Our Sweet Sanctuary!</h2>
+                <p class="welcome-text">At Sweet Matcha, we believe that every dessert tells a story. We blend traditional recipes with innovative twists to create unforgettable experiences for your taste buds.</p>
+                <div class="feature-highlights">
+                    <div class="feature-card">
+                        <span class="feature-icon">🌿</span>
+                        <h3 class="feature-title">Finest Ingredients</h3>
+                        <p class="feature-description">Sourced locally and globally for unparalleled freshness and flavor.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">💖</span>
+                        <h3 class="feature-title">Handcrafted with Love</h3>
+                        <p class="feature-description">Each dessert is a masterpiece, made with dedication and artistic precision.</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🚚</span>
+                        <h3 class="feature-title">Delivered Fresh</h3>
+                        <p class="feature-description">Enjoy our treats delivered right to your doorstep, perfectly packaged.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="featured-section" id="featured">
+            <div class="section-header">
+                <h2 class="section-title">Our Signature Desserts</h2>
+                <p class="section-subtitle">Discover our most loved and highly recommended sweet creations. Perfect for any occasion!</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-emoji">🍰</span>
+                    <h3 class="product-title">Matcha Delight Cake</h3>
+                    <p class="product-description">Layers of delicate matcha sponge, creamy mascarpone, and a hint of sweet red bean.</p>
+                    <p class="product-price">$45.00</p>
+                    <button class="product-button">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <span class="product-emoji">🍪</span>
+                    <h3 class="product-title">Lavender Honey Cookies</h3>
+                    <p class="product-description">Crisp, buttery cookies infused with aromatic lavender and golden honey.</p>
+                    <p class="product-price">$18.00</p>
+                    <button class="product-button">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <span class="product-emoji">🍮</span>
+                    <h3 class="product-title">Rosewater Pistachio Pudding</h3>
+                    <p class="product-description">A rich, creamy pudding with exotic rosewater and crunchy pistachios.</p>
+                    <p class="product-price">$12.00</p>
+                    <button class="product-button">Add to Cart</button>
+                </div>
+                <div class="product-card">
+                    <span class="product-emoji">🍩</span>
+                    <h3 class="product-title">Berry Bliss Donuts</h3>
+                    <p class="product-description">Fluffy donuts filled with a vibrant mixed berry compote and glazed to perfection.</p>
+                    <p class="product-price">$25.00</p>
+                    <button class="product-button">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section (Our Story) -->
+        <section class="experience-section" id="experience">
+            <div class="experience-content">
+                <div class="experience-text">
+                    <h2 class="experience-title">The Sweet Matcha Experience</h2>
+                    <p class="experience-description">More than just desserts, we offer an experience. From the moment you visit our site to the last bite of our creations, we aim for perfection.</p>
+                    <ul class="experience-features">
+                        <li>Artisanal quality in every single batch.</li>
+                        <li>Sustainable practices and ethical sourcing.</li>
+                        <li>A delightful fusion of global flavors.</li>
+                        <li>Dedicated customer support for all your needs.</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Learn More</a>
+                </div>
+                <div class="experience-visual">
+                    <span class="experience-emoji">🌸</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="section-header">
+                <h2 class="section-title">Our Sweet Achievements</h2>
+                <p class="section-subtitle">A glimpse into what makes Sweet Matcha a beloved destination for dessert lovers worldwide.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">🌟</span>
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🏆</span>
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Unique Recipes</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💖</span>
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Customer Satisfaction</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🌍</span>
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Years of Sweetness</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-subtitle">Hear from those who have experienced the magic of Sweet Matcha.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Sweet Matcha's cakes are simply divine! The Matcha Delight Cake was a showstopper at our party. So fresh and perfectly balanced."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Alice Chen</h4>
+                            <p>Food Blogger</p>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I've never tasted cookies quite like these Lavender Honey ones. They melt in your mouth and the aroma is just incredible. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Mark Johnson</h4>
+                            <p>Dessert Enthusiast</p>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Their custom order service is fantastic! They created a beautiful tiered cake for my wedding, and it was everything I dreamed of and more."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Sarah Lee</h4>
+                            <p>Happy Bride</p>
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call-to-Action Section -->
+        <section class="cta-section" id="contact">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready for a Sweet Escape?</h2>
+                <p class="cta-description">Whether it's a special occasion or just a craving, Sweet Matcha is here to sweeten your day. Contact us or shop now!</p>
+                <div class="cta-buttons">
+                    <a href="#featured" class="cta-button-large">Shop Now</a>
+                    <a href="mailto:info@sweetmatcha.com" class="cta-button-large outline">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Join Our Sweet Family!</h2>
+                <p class="newsletter-description">Subscribe to our newsletter for exclusive discounts, new product launches, and delightful recipes delivered straight to your inbox.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit">Subscribe Now</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <a href="#" class="footer-logo">🧁 Sweet Matcha</a>
+            <div class="footer-links">
+                <a href="#hero" class="footer-link">Home</a>
+                <a href="#featured" class="footer-link">Desserts</a>
+                <a href="#experience" class="footer-link">About Us</a>
+                <a href="#testimonials" class="footer-link">Reviews</a>
+                <a href="#contact" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon">F</a> <!-- Placeholder for Font Awesome/SVG icon -->
+                <a href="#" class="social-icon">I</a> <!-- Placeholder for Font Awesome/SVG icon -->
+                <a href="#" class="social-icon">X</a> <!-- Placeholder for Font Awesome/SVG icon -->
+            </div>
+            <p class="footer-text">&copy; 2025 Sweet Matcha. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Modal for Messages -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div class="modal-icon"></div>
+            <p class="modal-message"></p>
+        </div>
     </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="shop.html">Shop</a><a href="aboutus.html">About</a><a href="contactus.html">Contact</a><a href="cart.html">Cart</a>
-  </div>
 
-  <!-- Hero Carousel -->
-  <section class="hero-carousel" aria-label="Hero Carousel">
-    <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-    <button class="carousel-btn next" aria-label="Next slide">›</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navbar Scroll Effect ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
 
-    <div class="hero-slide active" style="background-image:url('img/matcha-cupcake.jpg');">
-      <h1 class="hero-title">Matcha Magic</h1>
-      <p class="hero-sub">Indulge in pastel happiness.</p>
-    </div>
-    <div class="hero-slide" style="background-image:url('img/matcha-doughnut.jpg');">
-      <h1 class="hero-title">Sweet & Fresh</h1>
-      <p class="hero-sub">Handcrafted with love.</p>
-    </div>
-    <div class="hero-slide" style="background-image:url('img/matcha-waffle.jpg');">
-      <h1 class="hero-title">Crunchy Joy</h1>
-      <p class="hero-sub">Perfect bites for your moments.</p>
-    </div>
-  </section>
+            // --- Smooth Scrolling for Navigation Links ---
+            document.querySelectorAll('.nav-link').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Optional: Remove active class from all and add to clicked
+                    document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
 
-  <!-- Promo Buttons -->
-  <div class="promo-bar">
-    <button class="promo-btn" onclick="location.href='shop.html'">Shop Now</button>
-    <button class="promo-btn">Get 10% Off – Use Code LOVE10</button>
-  </div>
+            // --- Dynamic Particle Background Generation ---
+            const particleBg = document.querySelector('.particle-bg');
+            const numParticles = 30; // Increased for more particles
+            const particleEmojis = ['🍰', '🍩', '🍪', '🍮', '🍦', '🍓', '🍵', '🍫', '🌸', '✨', '💖', '🍬', '🧁']; // Added more emojis
 
-  <!-- What We Offer -->
-  <section class="features" aria-labelledby="featuresTitle">
-    <h2 id="featuresTitle" style="grid-column:1/-1;text-align:center;font-size:2rem;margin-bottom:1.5rem;color:#2d5016;">What We Offer</h2>
-    <div class="feature"><span class="feature-icon">🍰</span><h3 class="feature-title">Cupcakes</h3><p class="feature-desc">Soft, moist cupcakes bursting with flavours and pastel swirl toppings.</p></div>
-    <div class="feature"><span class="feature-icon">🧁</span><h3 class="feature-title">Ice Cream</h3><p class="feature-desc">Creamy matcha ice cream made with real ingredients and love.</p></div>
-    <div class="feature"><span class="feature-icon">🍩</span><h3 class="feature-title">Donuts</h3><p class="feature-desc">Fluffy, glazed delights sprinkled with joy.</p></div>
-    <div class="feature"><span class="feature-icon">🧇</span><h3 class="feature-title">Waffles</h3><p class="feature-desc">Crispy-on-the-outside, soft-on-the-inside waffles infused with matcha.</p></div>
-  </section>
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('span');
+                particle.classList.add('particle');
+                particle.textContent = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                particle.style.animationDelay = `-${Math.random() * 10}s`; // Randomize start times
+                particle.style.fontSize = `${Math.random() * 1 + 0.5}rem`; // Randomize size
+                particle.style.opacity = `${Math.random() * 0.5 + 0.4}`; // Randomize opacity
+                particleBg.appendChild(particle);
+            }
 
-  <!-- Testimonials -->
-  <section class="testimonials" aria-labelledby="testiTitle">
-    <h2 id="testiTitle" style="text-align:center;font-size:2rem;color:#2d5016;">What Customers Say</h2>
-    <div class="testimonial-slide active">
-      <p class="testimonial-text">"Absolutely in love with the matcha cupcakes! The pastel swirl is perfection."</p>
-      <p class="testimonial-author">— Meera, Mumbai</p>
-    </div>
-    <div class="testimonial-slide"><p class="testimonial-text">"Delivery was so quick, and the ice-cream melted perfectly on my tongue."</p><p class="testimonial-author">— Aarav, Pune</p></div>
-    <div class="testimonial-slide"><p class="testimonial-text">"Sweet Matcha is my weekend delight. Every bite is happiness!"</p><p class="testimonial-author">— Priya, Delhi</p></div>
-    <div class="testimonial-nav"></div>
-  </section>
+            // --- Mouse Parallax Effect for Hero Section ---
+            const heroSection = document.getElementById('hero');
+            const heroContent = heroSection.querySelector('.hero-content');
+            const floatingElements = heroSection.querySelector('.floating-elements');
 
-  <!-- Newsletter -->
-  <section class="newsletter" aria-labelledby="newsTitle">
-    <h2 id="newsTitle" style="font-size:2rem;color:#2d5016;">Join Our Sweet Club</h2>
-    <p>Get 10% off your first order and get updates on new flavors!</p>
-    <form onsubmit="event.preventDefault(); alert('Subscribed!');">
-      <input type="email" placeholder="Your email..." required />
-      <button type="submit">Subscribe</button>
-    </form>
-  </section>
+            heroSection.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25; // Adjust divisor for intensity
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
 
-  <!-- Footer -->
-  <footer class="footer" aria-label="Footer">
-    <p>&copy; 2025 Sweet Matcha. All rights reserved.</p>
-    <div class="footer-social"><span>🍰 📸 💬</span></div>
-  </footer>
+                heroContent.style.transform = `translate(-${xAxis / 2}px, -${yAxis / 2}px)`; // Content moves less
+                floatingElements.style.transform = `translate(${xAxis}px, ${yAxis}px)`; // Floating elements move more
+            });
 
-  <!-- Chat + Back‑to‑Top -->
-  <button class="chat-btn" aria-label="Chat Support">💬</button>
-  <button class="top-btn" aria-label="Back to top">🡡</button>
+            heroSection.addEventListener('mouseleave', () => {
+                // Reset on mouse leave
+                heroContent.style.transform = `translate(0, 0)`;
+                floatingElements.style.transform = `translate(0, 0)`;
+            });
 
-  <script>
-    // Reuse particle BG logic
-    function createParticles(){
-      const bg = document.getElementById('particleBg');
-      for(let i=0;i<40;i++){let p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';bg.appendChild(p);}
-    }
-    document.addEventListener('DOMContentLoaded',()=>{
-      createParticles();
 
-      // Mobile menu toggle
-      document.querySelector('.mobile-menu-icon').onclick = () => {
-        document.getElementById('mobileMenu').classList.toggle('open');
-      };
+            // --- Newsletter Form Submission (using custom modal instead of alert) ---
+            const newsletterForm = document.getElementById('newsletterForm');
+            const messageModal = document.getElementById('messageModal');
+            const modalMessage = messageModal.querySelector('.modal-message');
+            const modalIcon = messageModal.querySelector('.modal-icon');
+            const closeButton = messageModal.querySelector('.close-button');
 
-      // Hero carousel
-      const slides=[...document.querySelectorAll('.hero-slide')];
-      let idx=0;
-      const next=()=>{slides[idx].classList.remove('active'); idx=(idx+1)%slides.length; slides[idx].classList.add('active');}
-      document.querySelector('.carousel-btn.next').onclick=next;
-      document.querySelector('.carousel-btn.prev').onclick=()=>{
-        slides[idx].classList.remove('active');
-        idx=(idx-1+slides.length)%slides.length;
-        slides[idx].classList.add('active');
-      };
-      setInterval(next,6000);
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault(); // Prevent default form submission
 
-      // Testimonials slider
-      const testSlides=[...document.querySelectorAll('.testimonial-slide')];
-      const nav=document.querySelector('.testimonial-nav');
-      testSlides.forEach((_,i)=>{
-        const dot=document.createElement('span');
-        if(i===0) dot.classList.add('active');
-        dot.onclick = ()=>{
-          testSlides.forEach(s=>s.classList.remove('active'));
-          nav.querySelectorAll('span').forEach(d=>d.classList.remove('active'));
-          testSlides[i].classList.add('active');
-          dot.classList.add('active');
-        }
-        nav.appendChild(dot);
-      });
+                const emailInput = this.querySelector('input[type="email"]');
+                const email = emailInput.value;
 
-      // Back to top visibility
-      const topBtn=document.querySelector('.top-btn');
-      window.onscroll=()=>{topBtn.style.display = window.scrollY>300?'flex':'none';}
-      topBtn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
-    });
-  </script>
+                if (email) {
+                    // Simulate API call or data storage
+                    console.log(`Subscribing email: ${email}`);
+                    modalIcon.textContent = '�';
+                    modalMessage.textContent = `Thank you for subscribing, ${email}! You'll receive our sweet updates soon.`;
+                    emailInput.value = ''; // Clear the input field
+                } else {
+                    modalIcon.textContent = '⚠️';
+                    modalMessage.textContent = 'Please enter a valid email address to subscribe.';
+                }
+                messageModal.style.display = 'flex'; // Show the modal
+            });
+
+            // Close modal when clicking on the close button
+            closeButton.addEventListener('click', () => {
+                messageModal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside of the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target == messageModal) {
+                    messageModal.style.display = 'none';
+                }
+            });
+
+            // --- Product "Add to Cart" Button (Placeholder functionality) ---
+            document.querySelectorAll('.product-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productTitle = this.closest('.product-card').querySelector('.product-title').textContent;
+                    modalIcon.textContent = '🛒';
+                    modalMessage.textContent = `${productTitle} has been added to your cart!`;
+                    messageModal.style.display = 'flex'; // Show the modal
+                });
+            });
+        });
+    </script>
 </body>
 </html>
