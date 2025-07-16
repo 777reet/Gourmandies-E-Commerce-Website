@@ -1,11 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_mail import Mail, Message
+from flask_cors import CORS
 import os
 from datetime import datetime
 import sqlite3
 import re
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../Pages', static_url_path='')
+CORS(app)
 
 # Email configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -62,6 +64,14 @@ def send_email(name, email, message):
         return True
     except:
         return False
+
+@app.route('/')
+def serve_index():
+    return app.send_static_file('index.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return app.send_static_file(filename)
 
 @app.route('/contact', methods=['POST'])
 def handle_contact():
