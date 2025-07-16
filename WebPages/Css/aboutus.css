@@ -6,7 +6,7 @@
 
     body {
       font-family: 'Georgia', serif;
-      background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 50%, #fff0f5 100%);
+      background: linear-gradient(135deg, #e0fce0 0%, #deeefc 50%, #f9dce6 100%);
       overflow-x: hidden;
       line-height: 1.7;
     }
@@ -32,12 +32,12 @@
     }
 
     .particle:nth-child(2n) {
-      background: rgba(255, 182, 193, 0.6);
+      background: rgba(237, 154, 167, 0.6);
       animation-delay: -2s;
     }
 
     .particle:nth-child(3n) {
-      background: rgba(255, 248, 220, 0.8);
+      background: rgba(252, 239, 185, 0.8);
       animation-delay: -4s;
     }
 
@@ -147,7 +147,7 @@
 
     .hero-title {
       font-size: 4rem;
-      background: linear-gradient(45deg, #2d5016, #ff69b4, #32cd32);
+      background: linear-gradient(45deg, #e01983, #ff69b4, #e1189b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -160,7 +160,7 @@
         filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.3));
       }
       50% {
-        filter: drop-shadow(0 0 20px rgba(50, 205, 50, 0.5));
+        filter: drop-shadow(0 0 20px rgba(205, 50, 94, 0.5));
       }
     }
 
