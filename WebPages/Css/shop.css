@@ -1,4 +1,4 @@
-    * {
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -361,6 +361,18 @@
       margin-bottom: 1rem;
       display: block;
       animation: pulse 2s infinite;
+    }
+
+    .category-icon img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover .category-icon img {
+      transform: scale(1.1);
     }
 
     @keyframes pulse {
