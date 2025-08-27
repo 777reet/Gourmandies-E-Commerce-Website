@@ -8,7 +8,7 @@
         body {
             font-family: 'Georgia', serif;
             /* Animated background gradient for the whole body */
-            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 30%, #fff0f5 60%, #f0fff0 100%);
+            background: linear-gradient(135deg, #d2f6d2 0%, #d2e6f8 30%, #f9d5e1 60%, #c9f2c9 100%);
             background-size: 200% 200%; /* Make background larger for animation */
             animation: backgroundPan 15s ease infinite alternate; /* Slow, mesmerizing pan */
             overflow-x: hidden;
@@ -1141,71 +1141,19 @@
             }
         }
 
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 2000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-            backdrop-filter: blur(5px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    backdrop-filter: blur(5px);
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-            text-align: center;
-            position: relative;
-            animation: fadeInScale 0.3s ease-out;
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .close-button {
-            color: #aaa;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #333;
-            text-decoration: none;
-        }
-
-        .modal-message {
-            font-size: 1.3rem;
-            color: #2d5016;
-            margin-bottom: 20px;
-        }
-
-        .modal-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #90ee90;
-        }
+    /* Remove this line: display: flex; */
+    align-items: center;
+    justify-content: center;
+}
