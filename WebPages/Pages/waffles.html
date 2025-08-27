@@ -2,12 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <title>Waffles</title>
-
     <link rel="stylesheet" href="../css/waffles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   </head>
   <body>
     <!-- Animated Background Particles -->
@@ -18,12 +15,10 @@
       <div class="nav-container">
         <a href="index.html" class="logo">Gourmandises</a>
         <div class="nav-links">
-          <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="shop.html" class="nav-link">Bakery</a>
-                <a href="aboutus.html" class="nav-link">Our Story</a>
-                <a href="contactus.html" class="nav-link">Contact Us</a>
-          </div>
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="shop.html" class="nav-link">Bakery</a>
+          <a href="aboutus.html" class="nav-link">Our Story</a>
+          <a href="contactus.html" class="nav-link">Contact Us</a>
         </div>
       </div>
     </nav>
@@ -93,14 +88,9 @@
         </button>
       </div>
       <div class="card">
-        <img
-          src="../Assets/Images/MapleCreamWaffle.png"
-          alt="Maple Cream Waffle"
-        />
+        <img src="../Assets/Images/MapleCreamWaffle.png" alt="Maple Cream Waffle" />
         <p>Maple Cream Waffle</p>
-        <button
-          onclick="addToCart('Maple Cream Waffle', 190, this)"
-        >
+        <button onclick="addToCart('Maple Cream Waffle', 190, this)">
           Add to Cart - ₹200
         </button>
       </div>
@@ -109,6 +99,7 @@
     <!-- Toast Notification -->
     <div id="toast" class="toast">Item added to cart! 🍪</div>
 
+    <!-- Load the JS file -->
     <script src="../Js/waffles.js"></script>
   </body>
 </html>
