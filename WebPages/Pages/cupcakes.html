@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cupcakes</title>
-    <link rel="stylesheet" href="../css/cupcakes.css">
+  <link rel="stylesheet" href="../css/cupcakes.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
 </head>
 <body>
   <!-- Animated Background Particles -->
@@ -16,11 +15,14 @@
     <div class="nav-container">
       <a href="index.html" class="logo">Gourmandises</a>
       <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="shop.html" class="nav-link">Bakery</a>
-                <a href="aboutus.html" class="nav-link">Our Story</a>
-                <a href="contactus.html" class="nav-link">Contact Us</a>
-            </div>
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Bakery</a>
+        <a href="aboutus.html" class="nav-link">Our Story</a>
+        <a href="contactus.html" class="nav-link">Contact Us</a>
+        <a href="cart.html" class="nav-link">
+          🛒 Cart <span id="cartCount">0</span>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -37,17 +39,17 @@
 
   <h2>Delicious Cupcakes</h2>
 
-  <!-- Grid -->
+  <!-- Product Grid -->
   <div class="grid">
     <div class="card">
       <img src="../Assets/Images/StrawberryCupcake.png" alt="Strawberry Compote Stuffed Cupcakes">
       <p>Strawberry Compote Stuffed Cupcakes</p>
-      <button onclick="addToCart('Strawberry Compote Stuffed Cupcakes', 120, this)">Add to Cart - ₹170</button>
+      <button onclick="addToCart('Strawberry Compote Stuffed Cupcakes', 170, this)">Add to Cart - ₹170</button>
     </div>
     <div class="card">
       <img src="../Assets/Images/CoquetteCupcakes.png" alt="Coquette Cupcake">
       <p>Coquette Cupcake</p>
-      <button onclick="addToCart('Coquette Cupcake', 130, this)">Add to Cart - ₹190</button>
+      <button onclick="addToCart('Coquette Cupcake', 190, this)">Add to Cart - ₹190</button>
     </div>
     <div class="card">
       <img src="../Assets/Images/EspressoCupcakes.png" alt="Espresso Cupcake">
@@ -57,12 +59,12 @@
     <div class="card">
       <img src="../Assets/Images/HazelnutCupcake.png" alt="Hazelnut Cupcake">
       <p>Hazelnut Cupcake</p>
-      <button onclick="addToCart('Hazelnut Cupcake', 150, this)">Add to Cart - ₹200</button>
+      <button onclick="addToCart('Hazelnut Cupcake', 200, this)">Add to Cart - ₹200</button>
     </div>
     <div class="card">
       <img src="../Assets/Images/MatchaCupcake.png" alt="Matcha Cupcake">
       <p>Matcha Cupcake</p>
-      <button onclick="addToCart('Matcha Cupcake', 160, this)">Add to Cart - ₹200</button>
+      <button onclick="addToCart('Matcha Cupcake', 200, this)">Add to Cart - ₹200</button>
     </div>
     <div class="card">
       <img src="../Assets/Images/BlackberryCupcake.png" alt="Blackberry Cupcake">
@@ -77,13 +79,14 @@
     <div class="card">
       <img src="../Assets/Images/LemonMeringueCupcake.png" alt="Lemon Meringue Cupcake">
       <p>Lemon Meringue Cupcake</p>
-      <button onclick="addToCart('Lemon Meringue Cupcake', 190, this)">Add to Cart - ₹200</button>
+      <button onclick="addToCart('Lemon Meringue Cupcake', 200, this)">Add to Cart - ₹200</button>
     </div>
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="toast">Item added to cart! 🍪</div>
+  <div id="toast" class="toast">Item added to cart 🧁</div>
 
+  <!-- JS -->
   <script src="../Js/cupcakes.js"></script>
 </body>
 </html>
