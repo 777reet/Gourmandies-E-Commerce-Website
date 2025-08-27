@@ -3,28 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Your Cart</title>
-    <link rel="stylesheet" href="../css/cart.css">
+  <link rel="stylesheet" href="../css/cart.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 </head>
 <body>
+  <!-- Particle Background -->
   <div class="particle-bg" id="particleBg"></div>
 
+  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <span class="logo-icon">🍃</span>
-        Gourmandises
+        <span class="logo-icon">🍃</span> Gourmandises
       </a>
-     <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="shop.html" class="nav-link">Bakery</a>
-                <a href="aboutus.html" class="nav-link">Our Story</a>
-                <a href="contactus.html" class="nav-link">Contact Us</a>
-            </div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="shop.html" class="nav-link">Bakery</a>
+        <a href="aboutus.html" class="nav-link">Our Story</a>
+        <a href="contactus.html" class="nav-link">Contact Us</a>
+      </div>
     </div>
   </nav>
 
+  <!-- Header / Hero Section -->
   <header class="hero-section">
     <div class="floating-elements">
       <div class="floating-item-cart">🛒</div>
@@ -36,55 +37,31 @@
     <h1 class="hero-title">Your Sweet Cart</h1>
   </header>
 
-  <!-- <main class="cart-container" id="cartContainer">
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/80/90ee90/ffffff?text=Matcha+Waffle" alt="Matcha Waffle" class="cart-item-image">
-      <div class="cart-item-details">
-        <h3>Matcha Dream Waffle</h3>
-        <p>Crispy with a hint of matcha</p>
-      </div>
-      <div class="cart-item-quantity">
-        <button class="quantity-btn decrement">-</button>
-        <span>1</span>
-        <button class="quantity-btn increment">+</button>
-      </div>
-      <div class="cart-item-price">$12.00</div>
-      <button class="remove-item-btn">✖</button>
-    </div>
-
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/80/ffb6c1/ffffff?text=Matcha+Cupcake" alt="Matcha Cupcake" class="cart-item-image">
-      <div class="cart-item-details">
-        <h3>Blossom Matcha Cupcake</h3>
-        <p>Fluffy cupcake with matcha buttercream</p>
-      </div>
-      <div class="cart-item-quantity">
-        <button class="quantity-btn decrement">-</button>
-        <span>2</span>
-        <button class="quantity-btn increment">+</button>
-      </div>
-      <div class="cart-item-price">$6.00</div>
-      <button class="remove-item-btn">✖</button>
-    </div> -->
-    <p class="cart-empty-message" style="display: none;">Your cart is a blank canvas! Add some sweet treats! 🌸</p>
+  <!-- Main Cart Section -->
+  <main class="cart-container" id="cartContainer">
+    <!-- Cart items will be dynamically injected by cart.js -->
+    <p class="cart-empty-message" style="display: none;">
+      Your cart is a blank canvas! Add some sweet treats! 🌸
+    </p>
 
     <div class="cart-summary" id="cartSummary">
       <div class="summary-row">
         <span>Subtotal:</span>
-        <span id="subtotal">250</span>
+        <span id="subtotal">₹0</span>
       </div>
       <div class="summary-row">
         <span>Shipping:</span>
-        <span id="shipping">250</span>
+        <span id="shipping">₹0</span>
       </div>
       <div class="summary-total">
         <span>Total:</span>
-        <span id="total">250</span>
+        <span id="total">₹0</span>
       </div>
       <button class="checkout-btn">Proceed to Checkout</button>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
       <p>&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
@@ -94,6 +71,7 @@
     </div>
   </footer>
 
-   <script src="../Js/cart.js"></script>
+  <!-- Script -->
+  <script src="../Js/cart.js"></script>
 </body>
 </html>
