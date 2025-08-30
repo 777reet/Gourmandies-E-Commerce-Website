@@ -10,6 +10,7 @@ class CartManager {
   init() {
     this.renderCart();
     this.setupEventListeners();
+    this.setupDeliveryListeners();
   }
 
   // Get cart from storage
@@ -68,6 +69,9 @@ class CartManager {
     if (this.cart.length === 0) {
       if (emptyMsg) emptyMsg.style.display = 'block';
       if (cartSummary) cartSummary.style.display = 'none';
+      // Hide delivery section when cart is empty
+      const deliverySection = document.getElementById('deliverySection');
+      if (deliverySection) deliverySection.style.display = 'none';
       return;
     } else {
       if (emptyMsg) emptyMsg.style.display = 'none';
@@ -108,17 +112,26 @@ class CartManager {
     this.attachItemEventListeners();
   }
 
-  // Update cart summary
+  // Update cart summary with delivery options
   updateSummary(subtotal) {
-    const shipping = subtotal > 0 ? 20 : 0; // Free shipping if cart is empty
-    const total = subtotal + shipping;
+    const deliverySection = document.getElementById('deliverySection');
+    const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+    const deliveryFee = selectedDelivery ? parseFloat(selectedDelivery.value) : 0;
+    
+    // Show/hide delivery section based on cart content
+    if (deliverySection) {
+      deliverySection.style.display = subtotal > 0 ? 'block' : 'none';
+    }
+    
+    const shipping = subtotal > 0 ? 20 : 0; // Base shipping
+    const total = subtotal + shipping + deliveryFee;
 
     const subtotalEl = document.getElementById('subtotal');
     const shippingEl = document.getElementById('shipping');
     const totalEl = document.getElementById('total');
 
     if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
-    if (shippingEl) shippingEl.textContent = `₹${shipping.toFixed(2)}`;
+    if (shippingEl) shippingEl.textContent = `₹${(shipping + deliveryFee).toFixed(2)}`;
     if (totalEl) totalEl.textContent = `₹${total.toFixed(2)}`;
   }
 
@@ -128,6 +141,17 @@ class CartManager {
     if (checkoutBtn) {
       checkoutBtn.addEventListener('click', () => this.proceedToCheckout());
     }
+  }
+
+  // Setup delivery option listeners
+  setupDeliveryListeners() {
+    const deliveryOptions = document.querySelectorAll('input[name="delivery"]');
+    deliveryOptions.forEach(option => {
+      option.addEventListener('change', () => {
+        const { subtotal } = this.calculateTotals();
+        this.updateSummary(subtotal);
+      });
+    });
   }
 
   // Attach event listeners to cart items
@@ -207,13 +231,15 @@ class CartManager {
     return true;
   }
 
-  // Calculate totals
+  // Calculate totals with delivery
   calculateTotals() {
     const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const shipping = subtotal > 0 ? 20 : 0;
+    const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+    const deliveryFee = selectedDelivery ? parseFloat(selectedDelivery.value) : 0;
+    const shipping = subtotal > 0 ? 20 + deliveryFee : 0;
     const total = subtotal + shipping;
     
-    return { subtotal, shipping, total };
+    return { subtotal, shipping, total, deliveryFee };
   }
 
   // Proceed to checkout and record order
@@ -223,7 +249,9 @@ class CartManager {
       return;
     }
 
-    const { subtotal, shipping, total } = this.calculateTotals();
+    const { subtotal, shipping, total, deliveryFee } = this.calculateTotals();
+    const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
+    const deliveryType = selectedDelivery ? selectedDelivery.parentElement.querySelector('strong').textContent : 'Standard Delivery';
 
     // Create order object
     const order = {
@@ -231,6 +259,8 @@ class CartManager {
       items: [...this.cart], // Create a copy of cart items
       subtotal: subtotal,
       shipping: shipping,
+      deliveryFee: deliveryFee,
+      deliveryType: deliveryType,
       total: total,
       date: new Date().toISOString(),
       status: 'pending',
@@ -242,7 +272,8 @@ class CartManager {
 Order Summary:
 Items: ${this.cart.length}
 Subtotal: ₹${subtotal.toFixed(2)}
-Shipping: ₹${shipping.toFixed(2)}
+Delivery: ${deliveryType}
+Shipping & Delivery: ₹${shipping.toFixed(2)}
 Total: ₹${total.toFixed(2)}
 
 Confirm your order?
@@ -262,6 +293,7 @@ Confirm your order?
       alert(`Order placed successfully! 
 Order ID: ${order.id}
 Total: ₹${total.toFixed(2)}
+Delivery: ${deliveryType}
 Thank you for your purchase!`);
 
       // Optional: Log order for debugging
