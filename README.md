@@ -4,17 +4,17 @@ A stunning, fully animated dessert bakery website with comprehensive e-commerce 
 
 ##  Beautiful Pages & Features
 
-### ** Homepage**
+###  Homepage
 - **Hero Animations**: Floating dessert icons with smooth rotations
 - **Particle Magic**: Dynamic background particles with color variations
 - **Interactive Navigation**: Glassmorphism navbar with hover transforms
 
-### ** Dessert Showcase**
+###  Dessert Showcase
 - **Product Gallery**: Beautiful dessert displays with hover effects
 - **Category Browsing**: Organized dessert collections
 - **Interactive Cards**: Smooth animations and add-to-cart functionality
 
-### ** Contact Experience**
+### Contact Experience
 - **Elegant Forms**: Beautifully styled contact forms with animations
 - **Interactive Elements**: Smooth focus effects and validation
 - **Professional Layout**: Clean, modern contact page design
@@ -37,7 +37,7 @@ A stunning, fully animated dessert bakery website with comprehensive e-commerce 
 - **Micro-interactions**: Hover effects, button animations, smooth transitions
 - **Gradient Magic**: Multi-color gradients throughout the design
 
-### **User Experience**
+### User Experience
 - **Responsive Design**: Perfect on desktop, tablet, and mobile
 - **Smooth Navigation**: Seamless page transitions and interactions
 - **Loading Animations**: Staggered element appearances
