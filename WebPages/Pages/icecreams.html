@@ -11,19 +11,21 @@
   <div class="particle-bg" id="particleBg"></div>
 
   <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Gourmandises</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="shop.html" class="nav-link">Bakery</a>
-        <a href="aboutus.html" class="nav-link">Our Story</a>
-        <a href="contactus.html" class="nav-link">Contact Us</a>
-        <a href="cart.html" class="nav-link">🛒 Cart (<span id="cartCount">0</span>)</a>
-
-      </div>
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🧁</span>
+      Gourmandises
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link active">Desserts</a>
+      <a href="aboutus.html" class="nav-link">Our Story</a>
+      <a href="contactus.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link">🛒 Cart</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Header -->
   <header>
@@ -41,49 +43,85 @@
   <!-- Grid -->
   <div class="grid">
     <div class="card">
-      <img src="../Assets/Images/PeachIcecream.png" alt="Peach Icecream">
-      <p>Peach Icecream</p>
-      <button onclick="addToCart('Peach Icecream', 120, this)">Add to Cart - ₹120</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/ChocolateIcecream.png" alt="Chocolate Icecream">
-      <p>Chocolate Icecream</p>
-      <button onclick="addToCart('Chocolate Icecream', 130, this)">Add to Cart - ₹130</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CookiesnCreamIcecream.png" alt="Cookies & Cream Icecream">
-      <p>Cookies & Cream Icecream</p>
-      <button onclick="addToCart('Cookies & Cream Icecream', 140, this)">Add to Cart - ₹140</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/BlackCurrentIcecream.png" alt="Black Current Icecream">
-      <p>Black Current Icecream</p>
-      <button onclick="addToCart('Black Current Icecream', 150, this)">Add to Cart - ₹150</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/ChocolateMintIcecream.png" alt="Chocolate Mint Icecream">
-      <p>Chocolate Mint Icecream</p>
-      <button onclick="addToCart('Chocolate Mint Icecream', 160, this)">Add to Cart - ₹160</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CaramelCrunchIcecream.png" alt="Caramel Crunch Icecream">
-      <p>Caramel Crunch Icecream</p>
-      <button onclick="addToCart('Caramel Crunch Icecream', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/HazelnutIcecream.png" alt="Hazelnut Icecream">
-      <p>Hazelnut Icecream</p>
-      <button onclick="addToCart('Hazelnut Icecream', 180, this)">Add to Cart - ₹180</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CoffeeIcecream.png" alt="Coffee Icecream">
-      <p>Coffee Icecream</p>
-      <button onclick="addToCart('Coffee Icecream', 190, this)">Add to Cart - ₹190</button>
-    </div>
+  <img src="../Assets/Images/PeachIcecream.png" alt="Peach Icecream">
+  <h3 class="product-name">Peach Icecream</h3>
+  <p class="product-price">₹120</p>
+  <button onclick="addToCart('Peach Icecream', 120, '../Assets/Images/PeachIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/ChocolateIcecream.png" alt="Chocolate Icecream">
+  <h3 class="product-name">Chocolate Icecream</h3>
+  <p class="product-price">₹130</p>
+  <button onclick="addToCart('Chocolate Icecream', 130, '../Assets/Images/ChocolateIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CookiesnCreamIcecream.png" alt="Cookies & Cream Icecream">
+  <h3 class="product-name">Cookies & Cream Icecream</h3>
+  <p class="product-price">₹140</p>
+  <button onclick="addToCart('Cookies & Cream Icecream', 140, '../Assets/Images/CookiesnCreamIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/BlackCurrentIcecream.png" alt="Black Current Icecream">
+  <h3 class="product-name">Black Current Icecream</h3>
+  <p class="product-price">₹150</p>
+  <button onclick="addToCart('Black Current Icecream', 150, '../Assets/Images/BlackCurrentIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/ChocolateMintIcecream.png" alt="Chocolate Mint Icecream">
+  <h3 class="product-name">Chocolate Mint Icecream</h3>
+  <p class="product-price">₹160</p>
+  <button onclick="addToCart('Chocolate Mint Icecream', 160, '../Assets/Images/ChocolateMintIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CaramelCrunchIcecream.png" alt="Caramel Crunch Icecream">
+  <h3 class="product-name">Caramel Crunch Icecream</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Caramel Crunch Icecream', 170, '../Assets/Images/CaramelCrunchIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/HazelnutIcecream.png" alt="Hazelnut Icecream">
+  <h3 class="product-name">Hazelnut Icecream</h3>
+  <p class="product-price">₹180</p>
+  <button onclick="addToCart('Hazelnut Icecream', 180, '../Assets/Images/HazelnutIcecream.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CoffeeIcecream.png" alt="Coffee Icecream">
+  <h3 class="product-name">Coffee Icecream</h3>
+  <p class="product-price">₹190</p>
+  <button onclick="addToCart('Coffee Icecream', 190, '../Assets/Images/CoffeeIcecream.png', this)">Add to Cart</button>
+</div>
   </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast">Item added to cart! 🍪</div>
+
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 
   <!-- Link JS at the bottom -->
   <script src="../Js/icecreams.js"></script>
