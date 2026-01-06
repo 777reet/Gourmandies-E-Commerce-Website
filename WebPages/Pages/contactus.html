@@ -18,17 +18,16 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <span class="logo-icon">🍃</span>
+        <span class="logo-icon">🧁</span>
         Gourmandises
       </a>
      <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="shop.html" class="nav-link">Bakery</a>
-                <a href="aboutus.html" class="nav-link">Our Story</a>
-                <a href="contactus.html" class="nav-link">Contact Us</a>
-                <a href="cart.html" class="nav-link">🛒 Cart </a>
-
-            </div>
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="shop.html" class="nav-link">Desserts</a>
+    <a href="aboutus.html" class="nav-link">Our Story</a>
+    <a href="contactus.html" class="nav-link active">Contact</a>
+    <a href="cart.html" class="nav-link">🛒 Cart</a>
+</div>
     </div>
   </nav>
 
@@ -56,7 +55,7 @@
         🎉 Thank you! Your message has been sent successfully!
       </div>
       
-      <form class="contact-form" id="contactForm" action="../Backend/contactus.py" method="POST">
+      <form class="contact-form" id="contactForm" onsubmit="return false;"></form>
         <div class="form-group">
           <input type="text" id="name" name="name" placeholder=" " required>
           <label for="name">Your Sweet Name</label>
@@ -102,13 +101,23 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; Crafted with care and green magic.</p>
-      <div class="footer-social">
-        <span>Stay connected: 🍃 📧 🌟</span>
-      </div>
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
     </div>
-  </footer>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 
   <script src="../Js/contactus.js"></script>
 </body>
