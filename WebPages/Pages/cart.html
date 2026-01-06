@@ -14,15 +14,15 @@
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <span class="logo-icon">🍃</span> Gourmandises
+        <span class="logo-icon">🧁</span> Gourmandises
       </a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="shop.html" class="nav-link">Bakery</a>
-        <a href="aboutus.html" class="nav-link">Our Story</a>
-        <a href="contactus.html" class="nav-link">Contact Us</a>
-        <a href="cart.html" class="nav-link">🛒 Cart </a>
-      </div>
+     <div class="nav-links">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="shop.html" class="nav-link">Desserts</a>
+  <a href="aboutus.html" class="nav-link">Our Story</a>
+  <a href="contactus.html" class="nav-link">Contact</a>
+  <a href="cart.html" class="nav-link active">🛒 Cart</a>
+</div>
     </div>
   </nav>
 
@@ -41,9 +41,9 @@
   <!-- Main Cart Section -->
   <main class="cart-container" id="cartContainer">
     <!-- Cart items will be dynamically injected by cart.js -->
-    <p class="cart-empty-message" style="display: none;">
-      Your cart is a blank canvas! Add some sweet treats! 🌸
-    </p>
+   <p class="cart-empty-message" id="emptyCartMessage" style="display: none;">
+  Your cart is a blank canvas! Add some sweet treats! 🌸
+</p>
 
     <div class="cart-summary" id="cartSummary">
       <div class="summary-row">
@@ -58,7 +58,7 @@
         <span>Total:</span>
         <span id="total">₹0</span>
       </div>
-      <button class="checkout-btn">Proceed to Checkout</button>
+<button class="checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
     </div>
 
     <!-- Delivery Options Section -->
@@ -92,13 +92,23 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
-      <div class="footer-social">
-        <span>Follow our journey: 🍰 📸 💬</span>
-      </div>
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
     </div>
-  </footer>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 
   <!-- Script -->
   <script src="../Js/cart.js"></script>
