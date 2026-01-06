@@ -11,21 +11,21 @@
   <div class="particle-bg" id="particleBg"></div>
 
   <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Gourmandises</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="shop.html" class="nav-link">Bakery</a>
-        <a href="aboutus.html" class="nav-link">Our Story</a>
-        <a href="contactus.html" class="nav-link">Contact Us</a>
-        <a href="cart.html" class="nav-link">🛒 Cart (<span id="cartCount">0</span>)</a>
-
-          🛒 Cart <span id="cartCount">0</span>
-        </a>
-      </div>
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🧁</span>
+      Gourmandises
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link active">Desserts</a>
+      <a href="aboutus.html" class="nav-link">Our Story</a>
+      <a href="contactus.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link">🛒 Cart</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Header -->
   <header>
@@ -43,45 +43,60 @@
   <!-- Product Grid -->
   <div class="grid">
     <div class="card">
-      <img src="../Assets/Images/StrawberryCupcake.png" alt="Strawberry Compote Stuffed Cupcakes">
-      <p>Strawberry Compote Stuffed Cupcakes</p>
-      <button onclick="addToCart('Strawberry Compote Stuffed Cupcakes', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CoquetteCupcakes.png" alt="Coquette Cupcake">
-      <p>Coquette Cupcake</p>
-      <button onclick="addToCart('Coquette Cupcake', 190, this)">Add to Cart - ₹190</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/EspressoCupcakes.png" alt="Espresso Cupcake">
-      <p>Espresso Cupcake</p>
-      <button onclick="addToCart('Espresso Cupcake', 140, this)">Add to Cart - ₹140</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/HazelnutCupcake.png" alt="Hazelnut Cupcake">
-      <p>Hazelnut Cupcake</p>
-      <button onclick="addToCart('Hazelnut Cupcake', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/MatchaCupcake.png" alt="Matcha Cupcake">
-      <p>Matcha Cupcake</p>
-      <button onclick="addToCart('Matcha Cupcake', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/BlackberryCupcake.png" alt="Blackberry Cupcake">
-      <p>Blackberry Cupcake</p>
-      <button onclick="addToCart('Blackberry Cupcake', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/OreoCupcake.png" alt="Oreo Cupcake">
-      <p>Oreo Cupcake</p>
-      <button onclick="addToCart('Oreo Cupcake', 180, this)">Add to Cart - ₹180</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/LemonMeringueCupcake.png" alt="Lemon Meringue Cupcake">
-      <p>Lemon Meringue Cupcake</p>
-      <button onclick="addToCart('Lemon Meringue Cupcake', 200, this)">Add to Cart - ₹200</button>
-    </div>
+  <img src="../Assets/Images/StrawberryCupcake.png" alt="Strawberry Compote Stuffed Cupcakes">
+  <h3 class="product-name">Strawberry Compote Stuffed Cupcakes</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Strawberry Compote Stuffed Cupcakes', 170, '../Assets/Images/StrawberryCupcake.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CoquetteCupcakes.png" alt="Coquette Cupcake">
+  <h3 class="product-name">Coquette Cupcake</h3>
+  <p class="product-price">₹190</p>
+  <button onclick="addToCart('Coquette Cupcake', 190, '../Assets/Images/CoquetteCupcakes.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/EspressoCupcakes.png" alt="Espresso Cupcake">
+  <h3 class="product-name">Espresso Cupcake</h3>
+  <p class="product-price">₹140</p>
+  <button onclick="addToCart('Espresso Cupcake', 140, '../Assets/Images/EspressoCupcakes.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/HazelnutCupcake.png" alt="Hazelnut Cupcake">
+  <h3 class="product-name">Hazelnut Cupcake</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Hazelnut Cupcake', 200, '../Assets/Images/HazelnutCupcake.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/MatchaCupcake.png" alt="Matcha Cupcake">
+  <h3 class="product-name">Matcha Cupcake</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Matcha Cupcake', 200, '../Assets/Images/MatchaCupcake.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/BlackberryCupcake.png" alt="Blackberry Cupcake">
+  <h3 class="product-name">Blackberry Cupcake</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Blackberry Cupcake', 170, '../Assets/Images/BlackberryCupcake.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/OreoCupcake.png" alt="Oreo Cupcake">
+  <h3 class="product-name">Oreo Cupcake</h3>
+  <p class="product-price">₹180</p>
+  <button onclick="addToCart('Oreo Cupcake', 180, '../Assets/Images/OreoCupcake.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/LemonMeringueCupcake.png" alt="Lemon Meringue Cupcake">
+  <h3 class="product-name">Lemon Meringue Cupcake</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Lemon Meringue Cupcake', 200, '../Assets/Images/LemonMeringueCupcake.png', this)">Add to Cart</button>
+</div>
   </div>
 
   <!-- Toast Notification -->
@@ -89,5 +104,25 @@
 
   <!-- JS -->
   <script src="../Js/cupcakes.js"></script>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 </body>
 </html>
