@@ -11,19 +11,21 @@
     <div class="particle-bg" id="particleBg"></div>
 
     <!-- Navigation -->
-    <nav>
-      <div class="nav-container">
-        <a href="index.html" class="logo">Gourmandises</a>
-        <div class="nav-links">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="shop.html" class="nav-link">Bakery</a>
-          <a href="aboutus.html" class="nav-link">Our Story</a>
-          <a href="contactus.html" class="nav-link">Contact Us</a>
-          <a href="cart.html" class="nav-link">🛒 Cart (<span id="cartCount">0</span>)</a>
-
-        </div>
-      </div>
-    </nav>
+   <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🧁</span>
+      Gourmandises
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link active">Desserts</a>
+      <a href="aboutus.html" class="nav-link">Our Story</a>
+      <a href="contactus.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link">🛒 Cart</a>
+    </div>
+  </div>
+</nav>
 
     <!-- Header -->
     <header>
@@ -41,65 +43,84 @@
     <!-- Grid -->
     <div class="grid">
       <div class="card">
-        <img src="../Assets/Images/WaffleTray.png" alt="Artisnal Waffle Tray" />
-        <p>Artisnal Waffle Tray</p>
-        <button onclick="addToCart('Artisnal Waffle Tray', 120, this)">
-          Add to Cart - ₹999
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/ClassicWaffle.png" alt="Classic Waffle" />
-        <p>Classic Waffle</p>
-        <button onclick="addToCart('Classic Waffle', 130, this)">
-          Add to Cart - ₹350
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/StrawberryCrumbleWffle.png" alt="Strawberry Crumble waffle" />
-        <p>Strawberry Crumble waffle</p>
-        <button onclick="addToCart('Strawberry Crumble waffle', 140, this)">
-          Add to Cart - ₹350
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/RedvelvetWaffle.png" alt="Redvelvet Waffle" />
-        <p>Redvelvet Waffle</p>
-        <button onclick="addToCart('Redvelvet Waffle', 150, this)">
-          Add to Cart - ₹350
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/MatchaWaffle.png" alt="Matcha Waffle" />
-        <p>Matcha Waffle</p>
-        <button onclick="addToCart('Matcha Waffle', 160, this)">
-          Add to Cart - ₹350
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/HoneyWaffle.png" alt="Honey Waffle" />
-        <p>Honey Waffle</p>
-        <button onclick="addToCart('Honey Waffle', 170, this)">
-          Add to Cart - ₹350
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/BiscoffWaffle.png" alt="Biscoff Waffle" />
-        <p>Biscoff Waffle</p>
-        <button onclick="addToCart('Biscoff Waffle', 180, this)">
-          Add to Cart - ₹200
-        </button>
-      </div>
-      <div class="card">
-        <img src="../Assets/Images/MapleCreamWaffle.png" alt="Maple Cream Waffle" />
-        <p>Maple Cream Waffle</p>
-        <button onclick="addToCart('Maple Cream Waffle', 190, this)">
-          Add to Cart - ₹200
-        </button>
-      </div>
+  <img src="../Assets/Images/WaffleTray.png" alt="Artisnal Waffle Tray" />
+  <h3 class="product-name">Artisnal Waffle Tray</h3>
+  <p class="product-price">₹999</p>
+  <button onclick="addToCart('Artisnal Waffle Tray', 999, '../Assets/Images/WaffleTray.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/ClassicWaffle.png" alt="Classic Waffle" />
+  <h3 class="product-name">Classic Waffle</h3>
+  <p class="product-price">₹350</p>
+  <button onclick="addToCart('Classic Waffle', 350, '../Assets/Images/ClassicWaffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/StrawberryCrumbleWffle.png" alt="Strawberry Crumble Waffle" />
+  <h3 class="product-name">Strawberry Crumble Waffle</h3>
+  <p class="product-price">₹350</p>
+  <button onclick="addToCart('Strawberry Crumble Waffle', 350, '../Assets/Images/StrawberryCrumbleWffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/RedvelvetWaffle.png" alt="Redvelvet Waffle" />
+  <h3 class="product-name">Redvelvet Waffle</h3>
+  <p class="product-price">₹350</p>
+  <button onclick="addToCart('Redvelvet Waffle', 350, '../Assets/Images/RedvelvetWaffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/MatchaWaffle.png" alt="Matcha Waffle" />
+  <h3 class="product-name">Matcha Waffle</h3>
+  <p class="product-price">₹350</p>
+  <button onclick="addToCart('Matcha Waffle', 350, '../Assets/Images/MatchaWaffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/HoneyWaffle.png" alt="Honey Waffle" />
+  <h3 class="product-name">Honey Waffle</h3>
+  <p class="product-price">₹350</p>
+  <button onclick="addToCart('Honey Waffle', 350, '../Assets/Images/HoneyWaffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/BiscoffWaffle.png" alt="Biscoff Waffle" />
+  <h3 class="product-name">Biscoff Waffle</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Biscoff Waffle', 200, '../Assets/Images/BiscoffWaffle.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/MapleCreamWaffle.png" alt="Maple Cream Waffle" />
+  <h3 class="product-name">Maple Cream Waffle</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Maple Cream Waffle', 200, '../Assets/Images/MapleCreamWaffle.png', this)">Add to Cart</button>
+</div>
     </div>
 
     <!-- Toast Notification -->
     <div id="toast" class="toast">Item added to cart! 🍪</div>
+
+    <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 
     <!-- Load the JS file -->
     <script src="../Js/waffles.js"></script>
