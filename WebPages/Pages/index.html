@@ -5,7 +5,6 @@
     <title>Gourmandises - Where Dreams Meet Desserts</title>
       <link rel="stylesheet" href="../css/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Georgia:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -23,7 +22,7 @@
                 <a href="shop.html" class="nav-link">Desserts</a>
                 <a href="aboutus.html" class="nav-link">Our Story</a>
                 <a href="contactus.html" class="nav-link">Contact</a>
-                <a href="cart.html" class="nav-link">🛒 Cart </a>
+                <a href="cart.html" class="nav-link">🛒 Cart</a>
 
             </div>
         </div>
@@ -90,25 +89,25 @@
                 <p class="section-subtitle">Discover our most loved and highly recommended sweet creations. Perfect for any occasion!</p>
             </div>
             <div class="products-grid">
-                <div class="product-card">
-      <img src="../Assets/Images/CookiesnCreamIcecream.png" alt="Cookies & Cream Icecream">
-      <p>Cookies & Cream Icecream</p>
-                    <p class="product-price">₹170</p>
-                    <button class="product-button">Add to Cart</button>
-                </div>
-                <div class="product-card">
-<img src="../Assets/Images/CoquetteCupcakes.png" alt="Coquette Cupcake">
-      <p>Coquette Cupcake</p>
-                    <p class="product-price">₹170</p>
-                    <button class="product-button">Add to Cart</button>
-                </div>
-                <div class="product-card">
-                          <img src="../Assets/Images/CaramelCookies.png" alt="White Chocolate Caramel Drizzle Cookie">
-      <p>White Chocolate Caramel Drizzle Cookie</p>
+               <div class="product-card">
+  <img src="../Assets/Images/CookiesnCreamIcecream.png" alt="Delicious Cookies and Cream Ice cream with chocolate chunks">
+  <h3 class="product-name">Cookies & Cream Icecream</h3>
+  <p class="product-price">₹170</p>
+  <button class="product-button" data-id="1" data-name="Cookies & Cream Icecream" data-price="170" data-image="../Assets/Images/CookiesnCreamIcecream.png">Add to Cart</button>
+</div>
+               <div class="product-card">
+  <img src="../Assets/Images/CoquetteCupcakes.png" alt="Beautiful pink coquette style cupcake with decorative frosting">
+  <h3 class="product-name">Coquette Cupcake</h3>
+  <p class="product-price">₹170</p>
+  <button class="product-button" data-id="2" data-name="Coquette Cupcake" data-price="170" data-image="../Assets/Images/CoquetteCupcakes.png">Add to Cart</button>
+</div>
 
-                    <p class="product-price">₹170</p>
-                    <button class="product-button">Add to Cart</button>
-                </div>
+<div class="product-card">
+  <img src="../Assets/Images/CaramelCookies.png" alt="White chocolate cookie with golden caramel drizzle topping">
+  <h3 class="product-name">White Chocolate Caramel Drizzle Cookie</h3>
+  <p class="product-price">₹170</p>
+  <button class="product-button" data-id="3" data-name="White Chocolate Caramel Drizzle Cookie" data-price="170" data-image="../Assets/Images/CaramelCookies.png">Add to Cart</button>
+</div>
             </div>
         </section>
 
@@ -222,10 +221,10 @@
             <div class="newsletter-content">
                 <h2 class="newsletter-title">Join Our Sweet Family!</h2>
                 <p class="newsletter-description">Subscribe to our newsletter for exclusive discounts, new product launches, and delightful recipes delivered straight to your inbox.</p>
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit">Subscribe Now</button>
-                </form>
+<form class="newsletter-form" id="newsletterForm" action="#" onsubmit="return false;">
+    <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+    <button type="submit">Subscribe Now</button>
+</form>
             </div>
         </section>
     </main>
@@ -240,13 +239,13 @@
                 <a href="aboutus.html" class="footer-link">About Us</a>
                 <a href="#testimonials" class="footer-link">Reviews</a>
                 <a href="contactus.html" class="footer-link">Contact</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link" onclick="alert('Privacy Policy page coming soon!'); return false;">Privacy Policy</a>
             </div>
-            <div class="social-icons">
-                <a href="#" class="social-icon">F</a> <!-- Placeholder for Font Awesome/SVG icon -->
-                <a href="#" class="social-icon">I</a> <!-- Placeholder for Font Awesome/SVG icon -->
-                <a href="#" class="social-icon">X</a> <!-- Placeholder for Font Awesome/SVG icon -->
-            </div>
+          <div class="social-icons">
+    <a href="#" class="social-icon" aria-label="Facebook">Facebook</a>
+    <a href="#" class="social-icon" aria-label="Instagram">Instagram</a>
+    <a href="#" class="social-icon" aria-label="Twitter">Twitter</a>
+</div>
             <p class="footer-text">&copy; 2025 Gourmandises. All rights reserved.</p>
         </div>
     </footer>
