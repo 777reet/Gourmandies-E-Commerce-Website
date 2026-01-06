@@ -11,19 +11,21 @@
   <div class="particle-bg" id="particleBg"></div>
 
   <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="index.html" class="logo">Gourmandises</a>
-      <div class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="shop.html" class="nav-link">Bakery</a>
-        <a href="aboutus.html" class="nav-link">Our Story</a>
-        <a href="contactus.html" class="nav-link">Contact Us</a>
-        <a href="cart.html" class="nav-link">🛒 Cart (<span id="cartCount">0</span>)</a>
-
-      </div>
+ <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🧁</span>
+      Gourmandises
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link active">Desserts</a>
+      <a href="aboutus.html" class="nav-link">Our Story</a>
+      <a href="contactus.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link">🛒 Cart</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
   <!-- Header -->
   <header>
@@ -40,50 +42,85 @@
 
   <!-- Grid -->
   <div class="grid">
-    <div class="card">
-      <img src="../Assets/Images/TiramisuDonuts.png" alt="Tiramisu Donut">
-      <p>Tiramisu Donut</p>
-      <button onclick="addToCart('Tiramisu Donut', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/StrawberryCheesecakeDonut.png" alt="Strawberry Cheesecake Donut">
-      <p>Strawberry Cheesecake Donut</p>
-      <button onclick="addToCart('Strawberry Cheesecake Donut', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/DonutSandwich.png" alt="Berry Donut Sandwiches">
-      <p>Berry Donut Sandwiches</p>
-      <button onclick="addToCart('Berry Donut Sandwiches', 190, this)">Add to Cart - ₹190</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/NutellaDonut.png" alt="Nutella Donut">
-      <p>Nutella Donut</p>
-      <button onclick="addToCart('Nutella Donut', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/TeddyDonut.png" alt="Pastel Teddy Donut">
-      <p>Pastel Teddy Donut</p>
-      <button onclick="addToCart('Pastel Teddy Donut', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CremeBruleeDonut.png" alt="Creme Brulee Donut">
-      <p>Creme Brulee Donut</p>
-      <button onclick="addToCart('Creme Brulee Donut', 200, this)">Add to Cart - ₹200</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/CinnamonDonut.png" alt="Cinnamon Crunch Donut">
-      <p>Cinnamon Crunch Donut</p>
-      <button onclick="addToCart('Cinnamon Crunch Donut', 180, this)">Add to Cart - ₹180</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/GlazedDonut.png" alt="Classic Glazed Donut">
-      <p>Classic Glazed Donut</p>
-      <button onclick="addToCart('Classic Glazed Donut', 170, this)">Add to Cart - ₹170</button>
-    </div>
+   <div class="card">
+  <img src="../Assets/Images/TiramisuDonuts.png" alt="Tiramisu Donut">
+  <h3 class="product-name">Tiramisu Donut</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Tiramisu Donut', 200, '../Assets/Images/TiramisuDonuts.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/StrawberryCheesecakeDonut.png" alt="Strawberry Cheesecake Donut">
+  <h3 class="product-name">Strawberry Cheesecake Donut</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Strawberry Cheesecake Donut', 200, '../Assets/Images/StrawberryCheesecakeDonut.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/DonutSandwich.png" alt="Berry Donut Sandwiches">
+  <h3 class="product-name">Berry Donut Sandwiches</h3>
+  <p class="product-price">₹190</p>
+  <button onclick="addToCart('Berry Donut Sandwiches', 190, '../Assets/Images/DonutSandwich.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/NutellaDonut.png" alt="Nutella Donut">
+  <h3 class="product-name">Nutella Donut</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Nutella Donut', 170, '../Assets/Images/NutellaDonut.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/TeddyDonut.png" alt="Pastel Teddy Donut">
+  <h3 class="product-name">Pastel Teddy Donut</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Pastel Teddy Donut', 200, '../Assets/Images/TeddyDonut.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CremeBruleeDonut.png" alt="Creme Brulee Donut">
+  <h3 class="product-name">Creme Brulee Donut</h3>
+  <p class="product-price">₹200</p>
+  <button onclick="addToCart('Creme Brulee Donut', 200, '../Assets/Images/CremeBruleeDonut.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/CinnamonDonut.png" alt="Cinnamon Crunch Donut">
+  <h3 class="product-name">Cinnamon Crunch Donut</h3>
+  <p class="product-price">₹180</p>
+  <button onclick="addToCart('Cinnamon Crunch Donut', 180, '../Assets/Images/CinnamonDonut.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/GlazedDonut.png" alt="Classic Glazed Donut">
+  <h3 class="product-name">Classic Glazed Donut</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Classic Glazed Donut', 170, '../Assets/Images/GlazedDonut.png', this)">Add to Cart</button>
+</div>
   </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast">Item added to cart! 🍩</div>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
 
   <!-- JS File -->
   <script src="../Js/donuts.js"></script>
