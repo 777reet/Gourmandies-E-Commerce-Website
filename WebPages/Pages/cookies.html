@@ -11,15 +11,18 @@
   <div class="particle-bg" id="particleBg"></div>
 
   <!-- Navigation -->
-<nav>
+<nav class="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">Gourmandises</a>
+    <a href="index.html" class="logo">
+      <span class="logo-icon">🧁</span>
+      Gourmandises
+    </a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link active">Home</a>
-      <a href="shop.html" class="nav-link">Bakery</a>
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="shop.html" class="nav-link active">Desserts</a>
       <a href="aboutus.html" class="nav-link">Our Story</a>
-      <a href="contactus.html" class="nav-link">Contact Us</a>
-      <a href="cart.html" class="nav-link">🛒 Cart (<span id="cartCount">0</span>)</a>
+      <a href="contactus.html" class="nav-link">Contact</a>
+      <a href="cart.html" class="nav-link">🛒 Cart</a>
     </div>
   </div>
 </nav>
@@ -40,51 +43,86 @@
 
   <!-- Grid -->
   <div class="grid">
-    <div class="card">
-      <img src="../Assets/Images/CaramelCookies.png" alt="White Chocolate Caramel Drizzle Cookie">
-      <p>White Chocolate Caramel Drizzle Cookie</p>
-      <button onclick="addToCart('White Chocolate Caramel Drizzle Cookie', 120, this)">Add to Cart - ₹250</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/StrawberryLemonadeCookie.png" alt="Strawberry Lemonade Cookie">
-      <p>Strawberry Lemonade Cookie</p>
-      <button onclick="addToCart('Strawberry Lemonade Cookie', 130, this)">Add to Cart - ₹250</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/LimeCheesecakeCookie.png" alt="Keylime Cheesecake Cookie">
-      <p>Keylime Cheesecake Cookie</p>
-      <button onclick="addToCart('Strawberry Cookie', 140, this)">Add to Cart - ₹250</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/LavenderCookie.png" alt="Lavender Honey Cookie">
-      <p>Lavender Honey Cookie</p>
-      <button onclick="addToCart('Lavender Honey Cookie', 150, this)">Add to Cart - ₹250</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/ChocolateChipCookie.png" alt="Chocolate Chip Cookie">
-      <p>Chocolate Chip Cookie</p>
-      <button onclick="addToCart('Chocolate Chip Cookie', 160, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/MatchCookie.png" alt="Classic Matcha Cookie">
-      <p>Classic Matcha Cookie</p>
-      <button onclick="addToCart('Classic Matcha Cookie', 170, this)">Add to Cart - ₹170</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/OreoCookie.png" alt="Oreo Cookie">
-      <p>Oreo Cookie</p>
-      <button onclick="addToCart('Oreo Cookie', 180, this)">Add to Cart - ₹190</button>
-    </div>
-    <div class="card">
-      <img src="../Assets/Images/PeanutButterNBrownieCookie.png" alt="Peanut Butter and Brownie Cookie">
-      <p>Peanut Butter and Brownie Cookie</p>
-      <button onclick="addToCart('Peanut Butter and Brownie Cookie', 190, this)">Add to Cart - ₹190</button>
-    </div>
+   <div class="card">
+  <img src="../Assets/Images/CaramelCookies.png" alt="White Chocolate Caramel Drizzle Cookie">
+  <h3 class="product-name">White Chocolate Caramel Drizzle Cookie</h3>
+  <p class="product-price">₹250</p>
+  <button onclick="addToCart('White Chocolate Caramel Drizzle Cookie', 250, '../Assets/Images/CaramelCookies.png', this)">Add to Cart</button>
+</div>
+   <div class="card">
+  <img src="../Assets/Images/StrawberryLemonadeCookie.png" alt="Strawberry Lemonade Cookie">
+  <h3 class="product-name">Strawberry Lemonade Cookie</h3>
+  <p class="product-price">₹250</p>
+  <button onclick="addToCart('Strawberry Lemonade Cookie', 250, '../Assets/Images/StrawberryLemonadeCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/LimeCheesecakeCookie.png" alt="Keylime Cheesecake Cookie">
+  <h3 class="product-name">Keylime Cheesecake Cookie</h3>
+  <p class="product-price">₹250</p>
+  <button onclick="addToCart('Keylime Cheesecake Cookie', 250, '../Assets/Images/LimeCheesecakeCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/LavenderCookie.png" alt="Lavender Honey Cookie">
+  <h3 class="product-name">Lavender Honey Cookie</h3>
+  <p class="product-price">₹250</p>
+  <button onclick="addToCart('Lavender Honey Cookie', 250, '../Assets/Images/LavenderCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/ChocolateChipCookie.png" alt="Chocolate Chip Cookie">
+  <h3 class="product-name">Chocolate Chip Cookie</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Chocolate Chip Cookie', 170, '../Assets/Images/ChocolateChipCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/MatchCookie.png" alt="Classic Matcha Cookie">
+  <h3 class="product-name">Classic Matcha Cookie</h3>
+  <p class="product-price">₹170</p>
+  <button onclick="addToCart('Classic Matcha Cookie', 170, '../Assets/Images/MatchCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/OreoCookie.png" alt="Oreo Cookie">
+  <h3 class="product-name">Oreo Cookie</h3>
+  <p class="product-price">₹190</p>
+  <button onclick="addToCart('Oreo Cookie', 190, '../Assets/Images/OreoCookie.png', this)">Add to Cart</button>
+</div>
+
+<div class="card">
+  <img src="../Assets/Images/PeanutButterNBrownieCookie.png" alt="Peanut Butter and Brownie Cookie">
+  <h3 class="product-name">Peanut Butter and Brownie Cookie</h3>
+  <p class="product-price">₹190</p>
+  <button onclick="addToCart('Peanut Butter and Brownie Cookie', 190, '../Assets/Images/PeanutButterNBrownieCookie.png', this)">Add to Cart</button>
+</div>
   </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast">Item added to cart! 🍪</div>
 
   <script src="../Js/cookies.js"></script>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="footer-content">
+    <a href="index.html" class="footer-logo">🧁 Gourmandises</a>
+    <div class="footer-links">
+      <a href="index.html" class="footer-link">Home</a>
+      <a href="shop.html" class="footer-link">Desserts</a>
+      <a href="aboutus.html" class="footer-link">About Us</a>
+      <a href="contactus.html" class="footer-link">Contact</a>
+      <a href="cart.html" class="footer-link">Cart</a>
+    </div>
+    <div class="social-icons">
+      <a href="#" class="social-icon" aria-label="Facebook">📘</a>
+      <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+      <a href="#" class="social-icon" aria-label="Twitter/X">🐦</a>
+    </div>
+    <p class="footer-text">&copy; 2025 Gourmandises. Serving joy with every sprinkle.</p>
+  </div>
+</footer>
+
 </body>
 </html>
