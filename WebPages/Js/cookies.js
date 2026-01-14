@@ -3,6 +3,7 @@
 class CookiesPage {
   constructor() {
     this.cart = this.getCartFromStorage();
+    this.toastTimeout = null;
     this.init();
   }
 
@@ -74,7 +75,7 @@ class CookiesPage {
   }
 
   // Enhanced add to cart functionality
-  addToCart(name, price, button, imageSrc = '') {
+  addToCart(name, price, imageSrc, button) {
     try {
       // Input validation
       if (!name || !price || isNaN(price) || price <= 0) {
@@ -83,26 +84,34 @@ class CookiesPage {
       }
 
       // Visual feedback - sparkle animation
-      const rect = button.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
 
-      // Create multiple sparkles
-      for (let i = 0; i < 5; i++) {
+        // Create multiple sparkles
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            this.createSparkle(
+              x + (Math.random() - 0.5) * 50,
+              y + (Math.random() - 0.5) * 50
+            );
+          }, i * 100);
+        }
+
+        // Button press animation
+        button.style.transform = 'scale(0.95)';
+        button.style.transition = 'transform 0.15s ease';
         setTimeout(() => {
-          this.createSparkle(
-            x + (Math.random() - 0.5) * 50,
-            y + (Math.random() - 0.5) * 50
-          );
-        }, i * 100);
-      }
+          button.style.transform = 'scale(1)';
+        }, 150);
 
-      // Button press animation
-      button.style.transform = 'scale(0.95)';
-      button.style.transition = 'transform 0.15s ease';
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 150);
+        // Optional: Disable button briefly to prevent spam clicks
+        button.disabled = true;
+        setTimeout(() => {
+          button.disabled = false;
+        }, 500);
+      }
 
       // Update cart data
       let cart = this.getCartFromStorage();
@@ -115,7 +124,7 @@ class CookiesPage {
           name: name,
           price: parseFloat(price),
           quantity: 1,
-          image: imageSrc,
+          image: imageSrc || '',
           category: 'Cookies',
           addedAt: new Date().toISOString()
         };
@@ -127,12 +136,6 @@ class CookiesPage {
 
       // Show success notification
       this.showToast(`${name} added to cart! 🍪`);
-
-      // Optional: Disable button briefly to prevent spam clicks
-      button.disabled = true;
-      setTimeout(() => {
-        button.disabled = false;
-      }, 500);
 
       return true;
 
@@ -236,6 +239,9 @@ class CookiesPage {
     const particleBg = document.getElementById('particleBg');
     if (!particleBg) return;
 
+    // Only create particles if there aren't too many
+    if (particleBg.children.length >= 15) return;
+
     // Create floating particles
     for (let i = 0; i < 15; i++) {
       const particle = document.createElement('div');
@@ -320,14 +326,9 @@ document.head.appendChild(styleSheet);
 let cookiesPage;
 
 // Global function for onclick handlers (maintains compatibility with HTML)
-function addToCart(name, price, button) {
+function addToCart(name, price, imageSrc, button) {
   if (cookiesPage) {
-    // Try to get image from the card
-    const card = button.closest('.card');
-    const img = card ? card.querySelector('img') : null;
-    const imageSrc = img ? img.src : '';
-    
-    return cookiesPage.addToCart(name, price, button, imageSrc);
+    return cookiesPage.addToCart(name, price, imageSrc, button);
   }
   return false;
 }
