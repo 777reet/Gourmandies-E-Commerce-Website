@@ -55,14 +55,14 @@ class CartManager {
   renderCart() {
     const cartContainer = document.getElementById('cartContainer');
     const cartSummary = document.getElementById('cartSummary');
-    const emptyMsg = document.querySelector('.cart-empty-message');
+    const emptyMsg = document.getElementById('emptyCartMessage');
 
     if (!cartContainer) {
       console.error('Cart container not found');
       return;
     }
 
-    // Clear existing content except summary and empty message
+    // Clear existing cart items
     const existingItems = cartContainer.querySelectorAll('.cart-item');
     existingItems.forEach(item => item.remove());
 
@@ -84,7 +84,7 @@ class CartManager {
       const itemEl = document.createElement('div');
       itemEl.className = 'cart-item';
       itemEl.innerHTML = `
-        <img src="${item.image || 'default-image.jpg'}" alt="${item.name}" class="cart-item-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjNmNGY2Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjc3NDgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbWFnZTwvdGV4dD4KPC9zdmc+'">
+        <img src="${item.image || '../Assets/Images/placeholder.png'}" alt="${item.name}" class="cart-item-image" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjZjNmNGY2Ii8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjc3NDgwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbWFnZTwvdGV4dD4KPC9zdmc+'">
         <div class="cart-item-details">
           <h3>${item.name || 'Unknown Item'}</h3>
           <p>Unit Price: ₹${(item.price || 0).toFixed(2)}</p>
@@ -123,21 +123,21 @@ class CartManager {
       deliverySection.style.display = subtotal > 0 ? 'block' : 'none';
     }
     
-    const shipping = subtotal > 0 ? 20 : 0; // Base shipping
-    const total = subtotal + shipping + deliveryFee;
+    const shipping = deliveryFee; // Use only delivery fee as shipping
+    const total = subtotal + shipping;
 
     const subtotalEl = document.getElementById('subtotal');
     const shippingEl = document.getElementById('shipping');
     const totalEl = document.getElementById('total');
 
     if (subtotalEl) subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
-    if (shippingEl) shippingEl.textContent = `₹${(shipping + deliveryFee).toFixed(2)}`;
+    if (shippingEl) shippingEl.textContent = `₹${shipping.toFixed(2)}`;
     if (totalEl) totalEl.textContent = `₹${total.toFixed(2)}`;
   }
 
   // Setup main event listeners
   setupEventListeners() {
-    const checkoutBtn = document.querySelector('.checkout-btn');
+    const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
       checkoutBtn.addEventListener('click', () => this.proceedToCheckout());
     }
@@ -148,7 +148,7 @@ class CartManager {
     const deliveryOptions = document.querySelectorAll('input[name="delivery"]');
     deliveryOptions.forEach(option => {
       option.addEventListener('change', () => {
-        const { subtotal } = this.calculateTotals();
+        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         this.updateSummary(subtotal);
       });
     });
@@ -236,7 +236,7 @@ class CartManager {
     const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
     const deliveryFee = selectedDelivery ? parseFloat(selectedDelivery.value) : 0;
-    const shipping = subtotal > 0 ? 20 + deliveryFee : 0;
+    const shipping = deliveryFee;
     const total = subtotal + shipping;
     
     return { subtotal, shipping, total, deliveryFee };
@@ -251,7 +251,15 @@ class CartManager {
 
     const { subtotal, shipping, total, deliveryFee } = this.calculateTotals();
     const selectedDelivery = document.querySelector('input[name="delivery"]:checked');
-    const deliveryType = selectedDelivery ? selectedDelivery.parentElement.querySelector('strong').textContent : 'Standard Delivery';
+    
+    // Get delivery type text
+    let deliveryType = 'Standard Delivery (Free)';
+    if (selectedDelivery) {
+      const deliveryLabel = selectedDelivery.parentElement.querySelector('strong');
+      if (deliveryLabel) {
+        deliveryType = deliveryLabel.textContent;
+      }
+    }
 
     // Create order object
     const order = {
@@ -268,16 +276,16 @@ class CartManager {
     };
 
     // Show order confirmation
-    const confirmOrder = confirm(`
-Order Summary:
+    const confirmOrder = confirm(
+`Order Summary:
 Items: ${this.cart.length}
 Subtotal: ₹${subtotal.toFixed(2)}
 Delivery: ${deliveryType}
 Shipping & Delivery: ₹${shipping.toFixed(2)}
 Total: ₹${total.toFixed(2)}
 
-Confirm your order?
-    `);
+Confirm your order?`
+    );
 
     if (confirmOrder) {
       // Save order
@@ -290,11 +298,13 @@ Confirm your order?
       this.renderCart();
 
       // Show success message
-      alert(`Order placed successfully! 
+      alert(
+`Order placed successfully! 
 Order ID: ${order.id}
 Total: ₹${total.toFixed(2)}
 Delivery: ${deliveryType}
-Thank you for your purchase!`);
+Thank you for your purchase!`
+      );
 
       // Optional: Log order for debugging
       console.log('Order placed:', order);
