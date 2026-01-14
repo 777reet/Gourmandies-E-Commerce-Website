@@ -1,6 +1,6 @@
-// Enhanced Ice Cream Page JavaScript with Cart Integration
+// Enhanced Ice Creams Page JavaScript with Cart Integration
 
-class IceCreamPage {
+class IceCreamsPage {
   constructor() {
     this.cart = this.getCartFromStorage();
     this.particleInterval = null;
@@ -15,7 +15,6 @@ class IceCreamPage {
     this.setupParallax();
     this.setupCardEffects();
     this.setupPageSparkles();
-    this.startPeriodicParticles();
   }
 
   // Get cart from localStorage with error handling
@@ -54,6 +53,9 @@ class IceCreamPage {
     const particleBg = document.getElementById('particleBg');
     if (!particleBg) return;
 
+    // Only create particles if there aren't too many
+    if (particleBg.children.length >= 50) return;
+
     const particleCount = 50;
 
     for (let i = 0; i < particleCount; i++) {
@@ -62,7 +64,7 @@ class IceCreamPage {
   }
 
   // Create a single particle
-  createSingleParticle(container, temporary = false) {
+  createSingleParticle(container) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     particle.style.cssText = `
@@ -73,32 +75,11 @@ class IceCreamPage {
       animation-duration: ${Math.random() * 3 + 3}s;
       width: ${Math.random() * 4 + 2}px;
       height: ${Math.random() * 4 + 2}px;
-      background: rgba(173, 216, 230, ${Math.random() * 0.6 + 0.2});
+      background: rgba(255, 182, 193, ${Math.random() * 0.6 + 0.2});
       border-radius: 50%;
     `;
 
     container.appendChild(particle);
-
-    // Clean up temporary particles
-    if (temporary) {
-      setTimeout(() => {
-        if (particle.parentNode) {
-          particle.parentNode.removeChild(particle);
-        }
-      }, 6000);
-    }
-  }
-
-  // Start periodic particle creation
-  startPeriodicParticles() {
-    this.particleInterval = setInterval(() => {
-      if (Math.random() < 0.1) {
-        const particleBg = document.getElementById('particleBg');
-        if (particleBg) {
-          this.createSingleParticle(particleBg, true);
-        }
-      }
-    }, 5000);
   }
 
   // Create sparkle effect
@@ -111,7 +92,7 @@ class IceCreamPage {
       top: ${y}px;
       width: 8px;
       height: 8px;
-      background: radial-gradient(circle, #fff, #87CEEB);
+      background: radial-gradient(circle, #fff, #ffb6c1);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
@@ -129,7 +110,7 @@ class IceCreamPage {
   }
 
   // Enhanced add to cart functionality
-  addToCart(name, price, button, imageSrc = '') {
+  addToCart(name, price, imageSrc, button) {
     try {
       // Input validation
       if (!name || !price || isNaN(price) || price <= 0) {
@@ -138,27 +119,35 @@ class IceCreamPage {
         return false;
       }
 
-      // Visual feedback - sparkle burst with ice cream colors
-      const rect = button.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+      // Visual feedback - sparkle burst
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
 
-      // Create sparkle burst
-      for (let i = 0; i < 5; i++) {
+        // Create sparkle burst
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            this.createSparkle(
+              x + (Math.random() - 0.5) * 50,
+              y + (Math.random() - 0.5) * 50
+            );
+          }, i * 100);
+        }
+
+        // Button press animation
+        button.style.transform = 'scale(0.95)';
+        button.style.transition = 'transform 0.15s ease';
         setTimeout(() => {
-          this.createSparkle(
-            x + (Math.random() - 0.5) * 50,
-            y + (Math.random() - 0.5) * 50
-          );
-        }, i * 100);
-      }
+          button.style.transform = 'scale(1)';
+        }, 150);
 
-      // Button pop animation
-      button.style.transform = 'scale(0.95)';
-      button.style.transition = 'transform 0.15s ease';
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 150);
+        // Optional: Disable button briefly to prevent spam clicks
+        button.disabled = true;
+        setTimeout(() => {
+          button.disabled = false;
+        }, 500);
+      }
 
       // Update cart data
       let cart = this.getCartFromStorage();
@@ -171,8 +160,8 @@ class IceCreamPage {
           name: name,
           price: parseFloat(price),
           quantity: 1,
-          image: imageSrc,
-          category: 'Ice Cream',
+          image: imageSrc || '',
+          category: 'Ice Creams',
           addedAt: new Date().toISOString()
         };
         cart.push(newItem);
@@ -181,14 +170,8 @@ class IceCreamPage {
       // Save updated cart
       this.saveCartToStorage(cart);
 
-      // Show success notification with ice cream emoji
+      // Show success notification
       this.showToast(`${name} added to cart! 🍦`);
-
-      // Optional: Disable button briefly to prevent spam clicks
-      button.disabled = true;
-      setTimeout(() => {
-        button.disabled = false;
-      }, 500);
 
       // Debug log
       console.log(`Added ${name} (₹${price}) to cart`);
@@ -257,7 +240,7 @@ class IceCreamPage {
     cards.forEach((card) => {
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-15px) scale(1.05)';
-        card.style.boxShadow = '0 25px 60px rgba(135, 206, 235, 0.3)'; // Ice cream blue shadow
+        card.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.2)';
         card.style.transition = 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
       });
 
@@ -311,24 +294,21 @@ class IceCreamPage {
   }
 }
 
-// CSS animations (inject into page) - Ice cream themed
+// CSS animations (inject into page)
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @keyframes sparkle {
     0% {
       opacity: 1;
       transform: scale(0) rotate(0deg);
-      box-shadow: 0 0 0 rgba(135, 206, 235, 0.5);
     }
     50% {
       opacity: 1;
       transform: scale(1) rotate(180deg);
-      box-shadow: 0 0 20px rgba(135, 206, 235, 0.8);
     }
     100% {
       opacity: 0;
       transform: scale(0) rotate(360deg);
-      box-shadow: 0 0 0 rgba(135, 206, 235, 0);
     }
   }
 
@@ -338,17 +318,12 @@ styleSheet.textContent = `
   }
 
   .toast.success {
-    background: linear-gradient(45deg, #87CEEB, #ADD8E6);
+    background: #51cf66;
     color: white;
-    box-shadow: 0 4px 20px rgba(135, 206, 235, 0.3);
   }
 
   .card {
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  }
-
-  .card:hover {
-    box-shadow: 0 25px 60px rgba(135, 206, 235, 0.3) !important;
   }
 
   .card button:disabled {
@@ -360,7 +335,6 @@ styleSheet.textContent = `
   .particle {
     pointer-events: none;
     animation: particleFloat linear infinite;
-    background: radial-gradient(circle, rgba(173, 216, 230, 0.8), rgba(135, 206, 235, 0.4)) !important;
   }
 
   @keyframes particleFloat {
@@ -379,79 +353,69 @@ styleSheet.textContent = `
       opacity: 0;
     }
   }
-
-  /* Ice cream themed sparkles */
-  .sparkle {
-    box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
-  }
 `;
 document.head.appendChild(styleSheet);
 
-// Initialize ice cream page
-let iceCreamPage;
+// Initialize ice creams page
+let iceCreamsPage;
 
 // Global function for onclick handlers (maintains compatibility with HTML)
-function addToCart(name, price, button) {
-  if (iceCreamPage) {
-    // Try to get image from the card
-    const card = button.closest('.card');
-    const img = card ? card.querySelector('img') : null;
-    const imageSrc = img ? img.src : '';
-    
-    return iceCreamPage.addToCart(name, price, button, imageSrc);
+function addToCart(name, price, imageSrc, button) {
+  if (iceCreamsPage) {
+    return iceCreamsPage.addToCart(name, price, imageSrc, button);
   }
   return false;
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  iceCreamPage = new IceCreamPage();
+  iceCreamsPage = new IceCreamsPage();
   
   // Debug info
-  console.log('Ice Cream page initialized with cart count:', iceCreamPage.getCartCount());
+  console.log('Ice Creams page initialized with cart count:', iceCreamsPage.getCartCount());
 });
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
-  if (iceCreamPage) {
-    iceCreamPage.cleanup();
+  if (iceCreamsPage) {
+    iceCreamsPage.cleanup();
   }
 });
 
 // Legacy functions for backward compatibility
 function getCart() {
-  return iceCreamPage ? iceCreamPage.getCartFromStorage() : [];
+  return iceCreamsPage ? iceCreamsPage.getCartFromStorage() : [];
 }
 
 function saveCart(cart) {
-  if (iceCreamPage) iceCreamPage.saveCartToStorage(cart);
+  if (iceCreamsPage) iceCreamsPage.saveCartToStorage(cart);
 }
 
 function updateCartCount() {
-  if (iceCreamPage) iceCreamPage.updateCartCount();
+  if (iceCreamsPage) iceCreamsPage.updateCartCount();
 }
 
 function createSparkle(x, y) {
-  if (iceCreamPage) iceCreamPage.createSparkle(x, y);
+  if (iceCreamsPage) iceCreamsPage.createSparkle(x, y);
 }
 
 function createParticles() {
-  if (iceCreamPage) iceCreamPage.createParticles();
+  if (iceCreamsPage) iceCreamsPage.createParticles();
 }
 
 function setupParallax() {
-  if (iceCreamPage) iceCreamPage.setupParallax();
+  if (iceCreamsPage) iceCreamsPage.setupParallax();
 }
 
 function setupCardEffects() {
-  if (iceCreamPage) iceCreamPage.setupCardEffects();
+  if (iceCreamsPage) iceCreamsPage.setupCardEffects();
 }
 
 // Utility functions for external use
 function getCurrentCartCount() {
-  return iceCreamPage ? iceCreamPage.getCartCount() : 0;
+  return iceCreamsPage ? iceCreamsPage.getCartCount() : 0;
 }
 
 function clearAllCart() {
-  if (iceCreamPage) iceCreamPage.clearCart();
+  if (iceCreamsPage) iceCreamsPage.clearCart();
 }
