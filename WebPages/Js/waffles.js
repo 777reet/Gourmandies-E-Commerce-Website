@@ -1,6 +1,6 @@
-// Enhanced Waffle Page JavaScript with Cart Integration
+// Enhanced Waffles Page JavaScript with Cart Integration
 
-class WafflePage {
+class WafflesPage {
   constructor() {
     this.cart = this.getCartFromStorage();
     this.particleInterval = null;
@@ -15,7 +15,6 @@ class WafflePage {
     this.setupParallax();
     this.setupCardEffects();
     this.setupPageSparkles();
-    this.startPeriodicParticles();
   }
 
   // Get cart from localStorage with error handling
@@ -54,6 +53,9 @@ class WafflePage {
     const particleBg = document.getElementById('particleBg');
     if (!particleBg) return;
 
+    // Only create particles if there aren't too many
+    if (particleBg.children.length >= 50) return;
+
     const particleCount = 50;
 
     for (let i = 0; i < particleCount; i++) {
@@ -61,8 +63,8 @@ class WafflePage {
     }
   }
 
-  // Create a single particle (waffle-themed)
-  createSingleParticle(container, temporary = false) {
+  // Create a single particle
+  createSingleParticle(container) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     particle.style.cssText = `
@@ -73,35 +75,14 @@ class WafflePage {
       animation-duration: ${Math.random() * 3 + 3}s;
       width: ${Math.random() * 4 + 2}px;
       height: ${Math.random() * 4 + 2}px;
-      background: rgba(218, 165, 32, ${Math.random() * 0.6 + 0.2});
+      background: rgba(255, 182, 193, ${Math.random() * 0.6 + 0.2});
       border-radius: 50%;
     `;
 
     container.appendChild(particle);
-
-    // Clean up temporary particles
-    if (temporary) {
-      setTimeout(() => {
-        if (particle.parentNode) {
-          particle.parentNode.removeChild(particle);
-        }
-      }, 6000);
-    }
   }
 
-  // Start periodic particle creation
-  startPeriodicParticles() {
-    this.particleInterval = setInterval(() => {
-      if (Math.random() < 0.1) {
-        const particleBg = document.getElementById('particleBg');
-        if (particleBg) {
-          this.createSingleParticle(particleBg, true);
-        }
-      }
-    }, 5000);
-  }
-
-  // Create sparkle effect (golden waffle sparkles)
+  // Create sparkle effect
   createSparkle(x, y) {
     const sparkle = document.createElement('div');
     sparkle.className = 'sparkle';
@@ -111,7 +92,7 @@ class WafflePage {
       top: ${y}px;
       width: 8px;
       height: 8px;
-      background: radial-gradient(circle, #FFF8DC, #DAA520);
+      background: radial-gradient(circle, #fff, #ffb6c1);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
@@ -129,7 +110,7 @@ class WafflePage {
   }
 
   // Enhanced add to cart functionality
-  addToCart(name, price, button, imageSrc = '') {
+  addToCart(name, price, imageSrc, button) {
     try {
       // Input validation
       if (!name || !price || isNaN(price) || price <= 0) {
@@ -138,27 +119,35 @@ class WafflePage {
         return false;
       }
 
-      // Visual feedback - golden sparkle burst
-      const rect = button.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
+      // Visual feedback - sparkle burst
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
 
-      // Create sparkle burst
-      for (let i = 0; i < 5; i++) {
+        // Create sparkle burst
+        for (let i = 0; i < 5; i++) {
+          setTimeout(() => {
+            this.createSparkle(
+              x + (Math.random() - 0.5) * 50,
+              y + (Math.random() - 0.5) * 50
+            );
+          }, i * 100);
+        }
+
+        // Button press animation
+        button.style.transform = 'scale(0.95)';
+        button.style.transition = 'transform 0.15s ease';
         setTimeout(() => {
-          this.createSparkle(
-            x + (Math.random() - 0.5) * 50,
-            y + (Math.random() - 0.5) * 50
-          );
-        }, i * 100);
-      }
+          button.style.transform = 'scale(1)';
+        }, 150);
 
-      // Button pop animation
-      button.style.transform = 'scale(0.95)';
-      button.style.transition = 'transform 0.15s ease';
-      setTimeout(() => {
-        button.style.transform = 'scale(1)';
-      }, 150);
+        // Optional: Disable button briefly to prevent spam clicks
+        button.disabled = true;
+        setTimeout(() => {
+          button.disabled = false;
+        }, 500);
+      }
 
       // Update cart data
       let cart = this.getCartFromStorage();
@@ -171,7 +160,7 @@ class WafflePage {
           name: name,
           price: parseFloat(price),
           quantity: 1,
-          image: imageSrc,
+          image: imageSrc || '',
           category: 'Waffles',
           addedAt: new Date().toISOString()
         };
@@ -181,14 +170,8 @@ class WafflePage {
       // Save updated cart
       this.saveCartToStorage(cart);
 
-      // Show success notification with waffle emoji
+      // Show success notification
       this.showToast(`${name} added to cart! 🧇`);
-
-      // Optional: Disable button briefly to prevent spam clicks
-      button.disabled = true;
-      setTimeout(() => {
-        button.disabled = false;
-      }, 500);
 
       // Debug log
       console.log(`Added ${name} (₹${price}) to cart`);
@@ -257,7 +240,7 @@ class WafflePage {
     cards.forEach((card) => {
       card.addEventListener('mouseenter', () => {
         card.style.transform = 'translateY(-15px) scale(1.05)';
-        card.style.boxShadow = '0 25px 60px rgba(218, 165, 32, 0.3)'; // Golden waffle shadow
+        card.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.2)';
         card.style.transition = 'all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
       });
 
@@ -311,24 +294,21 @@ class WafflePage {
   }
 }
 
-// CSS animations (inject into page) - Waffle themed
+// CSS animations (inject into page)
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @keyframes sparkle {
     0% {
       opacity: 1;
       transform: scale(0) rotate(0deg);
-      box-shadow: 0 0 0 rgba(218, 165, 32, 0.5);
     }
     50% {
       opacity: 1;
       transform: scale(1) rotate(180deg);
-      box-shadow: 0 0 20px rgba(218, 165, 32, 0.8);
     }
     100% {
       opacity: 0;
       transform: scale(0) rotate(360deg);
-      box-shadow: 0 0 0 rgba(218, 165, 32, 0);
     }
   }
 
@@ -338,18 +318,12 @@ styleSheet.textContent = `
   }
 
   .toast.success {
-    background: linear-gradient(45deg, #DAA520, #FFD700);
-    color: #8B4513;
-    box-shadow: 0 4px 20px rgba(218, 165, 32, 0.3);
-    font-weight: bold;
+    background: #51cf66;
+    color: white;
   }
 
   .card {
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-  }
-
-  .card:hover {
-    box-shadow: 0 25px 60px rgba(218, 165, 32, 0.3) !important;
   }
 
   .card button:disabled {
@@ -361,7 +335,6 @@ styleSheet.textContent = `
   .particle {
     pointer-events: none;
     animation: particleFloat linear infinite;
-    background: radial-gradient(circle, rgba(218, 165, 32, 0.8), rgba(255, 215, 0, 0.4)) !important;
   }
 
   @keyframes particleFloat {
@@ -380,95 +353,69 @@ styleSheet.textContent = `
       opacity: 0;
     }
   }
-
-  /* Waffle themed sparkles */
-  .sparkle {
-    box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
-  }
-
-  /* Add waffle grid pattern to cards on hover */
-  .card:hover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(45deg, transparent 25%, rgba(218, 165, 32, 0.1) 25%, rgba(218, 165, 32, 0.1) 50%, transparent 50%, transparent 75%, rgba(218, 165, 32, 0.1) 75%);
-    background-size: 20px 20px;
-    pointer-events: none;
-    opacity: 0.3;
-    z-index: 1;
-  }
 `;
 document.head.appendChild(styleSheet);
 
-// Initialize waffle page
-let wafflePage;
+// Initialize waffles page
+let wafflesPage;
 
 // Global function for onclick handlers (maintains compatibility with HTML)
-function addToCart(name, price, button) {
-  if (wafflePage) {
-    // Try to get image from the card
-    const card = button.closest('.card');
-    const img = card ? card.querySelector('img') : null;
-    const imageSrc = img ? img.src : '';
-    
-    return wafflePage.addToCart(name, price, button, imageSrc);
+function addToCart(name, price, imageSrc, button) {
+  if (wafflesPage) {
+    return wafflesPage.addToCart(name, price, imageSrc, button);
   }
   return false;
 }
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  wafflePage = new WafflePage();
+  wafflesPage = new WafflesPage();
   
   // Debug info
-  console.log('Waffle page initialized with cart count:', wafflePage.getCartCount());
+  console.log('Waffles page initialized with cart count:', wafflesPage.getCartCount());
 });
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
-  if (wafflePage) {
-    wafflePage.cleanup();
+  if (wafflesPage) {
+    wafflesPage.cleanup();
   }
 });
 
 // Legacy functions for backward compatibility
 function getCart() {
-  return wafflePage ? wafflePage.getCartFromStorage() : [];
+  return wafflesPage ? wafflesPage.getCartFromStorage() : [];
 }
 
 function saveCart(cart) {
-  if (wafflePage) wafflePage.saveCartToStorage(cart);
+  if (wafflesPage) wafflesPage.saveCartToStorage(cart);
 }
 
 function updateCartCount() {
-  if (wafflePage) wafflePage.updateCartCount();
+  if (wafflesPage) wafflesPage.updateCartCount();
 }
 
 function createSparkle(x, y) {
-  if (wafflePage) wafflePage.createSparkle(x, y);
+  if (wafflesPage) wafflesPage.createSparkle(x, y);
 }
 
 function createParticles() {
-  if (wafflePage) wafflePage.createParticles();
+  if (wafflesPage) wafflesPage.createParticles();
 }
 
 function setupParallax() {
-  if (wafflePage) wafflePage.setupParallax();
+  if (wafflesPage) wafflesPage.setupParallax();
 }
 
 function setupCardEffects() {
-  if (wafflePage) wafflePage.setupCardEffects();
+  if (wafflesPage) wafflesPage.setupCardEffects();
 }
 
 // Utility functions for external use
 function getCurrentCartCount() {
-  return wafflePage ? wafflePage.getCartCount() : 0;
+  return wafflesPage ? wafflesPage.getCartCount() : 0;
 }
 
 function clearAllCart() {
-  if (wafflePage) wafflePage.clearCart();
+  if (wafflesPage) wafflesPage.clearCart();
 }
